@@ -11,17 +11,33 @@
 <body>
 
   <!-- ================= NAVIGATION ================= -->
-  <nav>
-    <a href="index.html">Home</a> |
-    <a href="course-details.html">Course Details</a> |
-    <a href="my-courses.html">My Courses</a> |
-    <a href="mock-tests.html">Mock / MCQ Tests</a> |
-    <a href="demo-pdfs.html">Demo PDFs</a> |
-    <a href="gk-pdfs.html">GK PDFs</a> |
-    <a href="jkssb-updates.html">JKSSB Updates</a> |
-    <a href="feedback.html">Feedback</a> |
-    <a href="contact.html">Contact Us</a>
-  </nav>
+ <header class="top-bar">
+  <div class="nav-left">
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+    <span class="logo-text">JKSSB Drivers Academy</span>
+  </div>
+
+  <div class="nav-right">
+    <button class="search-btn" onclick="toggleSearch()">🔍</button>
+  </div>
+</header>
+
+<nav class="nav-links" id="navMenu">
+  <a href="index.html">Home</a>
+  <a href="course-details.html">Course Details</a>
+  <a href="my-courses.html">My Courses</a>
+  <a href="mock-tests.html">Mock / MCQ Tests</a>
+  <a href="demo-pdfs.html">Demo PDFs</a>
+  <a href="gk-pdfs.html">GK PDFs</a>
+  <a href="jkssb-updates.html">JKSSB Updates</a>
+  <a href="feedback.html">Feedback</a>
+  <a href="contact.html">Contact Us</a>
+</nav>
+
+<div class="search-box" id="searchBox">
+  <input type="text" placeholder="Search..." />
+</div>
+
 
   <!-- ================= MAIN CONTENT ================= -->
   <main>
