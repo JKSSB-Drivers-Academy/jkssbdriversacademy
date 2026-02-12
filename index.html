@@ -109,8 +109,12 @@
   </nav>
 
   <div class="search-box" id="searchBox">
-    <input type="text" placeholder="Search..." />
-  </div>
+  <input
+    type="search"
+    id="siteSearch"
+    placeholder="Search courses, PDFs, tests…"
+  />
+</div>
 
   <!-- ================= MAIN CONTENT ================= -->
   <main>
@@ -162,14 +166,28 @@
 
   <!-- JS (already used by hamburger/search) -->
   <script>
-    function toggleMenu() {
-      document.getElementById("navMenu").classList.toggle("show");
-    }
-    function toggleSearch() {
-      const box = document.getElementById("searchBox");
-      box.style.display = box.style.display === "block" ? "none" : "block";
-    }
-  </script>
+  function toggleMenu() {
+    document.getElementById("navMenu").classList.toggle("show");
+  }
+
+  function toggleSearch() {
+    const box = document.getElementById("searchBox");
+    box.style.display = box.style.display === "block" ? "none" : "block";
+    document.getElementById("siteSearch").focus();
+  }
+
+  document.getElementById("siteSearch")?.addEventListener("input", function () {
+    const query = this.value.toLowerCase();
+    document.querySelectorAll("section.glass-card *").forEach(el => {
+      if (el.textContent.toLowerCase().includes(query)) {
+        el.style.background = "rgba(255,255,255,0.15)";
+      } else {
+        el.style.background = "transparent";
+      }
+    });
+  });
+</script>
+
 
 </body>
 </html>
