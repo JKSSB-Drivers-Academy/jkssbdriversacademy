@@ -36,10 +36,19 @@ body {
 }
 
 /* ===== NAVIGATION ===== */
+/* ===== GLASS NAVIGATION (DARKER) ===== */
 nav {
   margin-bottom: 30px;
   padding: 15px 20px;
   border-radius: 14px;
+
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+}
+
 
   /* Glass effect */
   background: rgba(255, 255, 255, 0.12);
@@ -86,13 +95,15 @@ a {
   color: #a8d8ff;
 }
 /* ===== GLASS CARD (REUSABLE PANEL) ===== */
+/* ===== GLASS CARD (LIGHTER CONTENT PANEL) ===== */
 .glass-card {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border-radius: 18px;
   padding: 30px;
   max-width: 1000px;
   margin: 40px auto;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.30);
 }
+
