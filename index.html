@@ -79,16 +79,21 @@
 <body>
 
   <!-- ================= TOP BAR (UNCHANGED) ================= -->
-  <header class="top-bar">
-    <div class="nav-left">
-      <button class="hamburger" onclick="toggleMenu()">☰</button>
-      <span class="logo-text">JKSSB Drivers Academy</span>
-    </div>
+<header class="top-bar premium-bar">
+  <div class="nav-left">
+    <button class="icon-btn" onclick="toggleMenu()" aria-label="Menu">
+      &#9776;
+    </button>
+    <span class="app-name">JKSSB Drivers Academy</span>
+  </div>
 
-    <div class="nav-right">
-      <button class="search-btn" onclick="toggleSearch()">🔍</button>
-    </div>
-  </header>
+  <div class="nav-right">
+    <button class="icon-btn" onclick="toggleSearch()" aria-label="Search">
+      🔍
+    </button>
+  </div>
+</header>
+
 
   <!-- ================= HAMBURGER MENU (UNCHANGED) ================= -->
   <nav class="nav-links" id="navMenu">
