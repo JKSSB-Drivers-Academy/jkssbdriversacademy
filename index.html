@@ -7,45 +7,109 @@
 
   <!-- Global Styles -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- Page-specific background override -->
+  <style>
+    body {
+      background: linear-gradient(
+        180deg,
+        #2b2b2e,
+        #1f1f22,
+        #2b2b2e
+      );
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: inherit;
+      filter: blur(22px);
+      transform: scale(1.1);
+      z-index: -1;
+    }
+
+    /* White frost pill nav */
+    .white-frost-nav {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 30px;
+
+      background: rgba(255, 255, 255, 0.22);
+      backdrop-filter: blur(28px) saturate(140%);
+      -webkit-backdrop-filter: blur(28px) saturate(140%);
+
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow:
+        0 18px 55px rgba(0, 0, 0, 0.55),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+
+      z-index: 999;
+    }
+
+    .white-frost-nav a {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 14px;
+      border-radius: 22px;
+      font-size: 13px;
+      color: #000;
+      text-decoration: none;
+      opacity: 0.85;
+      white-space: nowrap;
+    }
+
+    .white-frost-nav a.active {
+      background: rgba(255, 255, 255, 0.35);
+      opacity: 1;
+    }
+
+    .white-frost-nav a:hover {
+      opacity: 1;
+    }
+  </style>
 </head>
+
 <body>
 
-  <!-- ================= NAVIGATION ================= -->
- <header class="top-bar">
-  <div class="nav-left">
-    <button class="hamburger" onclick="toggleMenu()">☰</button>
-    <span class="logo-text">JKSSB Drivers Academy</span>
+  <!-- ================= TOP BAR (UNCHANGED) ================= -->
+  <header class="top-bar">
+    <div class="nav-left">
+      <button class="hamburger" onclick="toggleMenu()">☰</button>
+      <span class="logo-text">JKSSB Drivers Academy</span>
+    </div>
+
+    <div class="nav-right">
+      <button class="search-btn" onclick="toggleSearch()">🔍</button>
+    </div>
+  </header>
+
+  <!-- ================= HAMBURGER MENU (UNCHANGED) ================= -->
+  <nav class="nav-links" id="navMenu">
+    <a href="index.html">Home</a>
+    <a href="course-details.html">Course Details</a>
+    <a href="my-courses.html">My Courses</a>
+    <a href="mock-tests.html">Mock / MCQ Tests</a>
+    <a href="demo-pdfs.html">Demo PDFs</a>
+    <a href="gk-pdfs.html">GK PDFs</a>
+    <a href="jkssb-updates.html">JKSSB Updates</a>
+    <a href="feedback.html">Feedback</a>
+    <a href="contact.html">Contact Us</a>
+  </nav>
+
+  <div class="search-box" id="searchBox">
+    <input type="text" placeholder="Search..." />
   </div>
-
-  <div class="nav-right">
-    <button class="search-btn" onclick="toggleSearch()">🔍</button>
-  </div>
-</header>
-
-<nav class="nav-links" id="navMenu">
-  <a href="index.html">Home</a>
-  <a href="course-details.html">Course Details</a>
-  <a href="my-courses.html">My Courses</a>
-  <a href="mock-tests.html">Mock / MCQ Tests</a>
-  <a href="demo-pdfs.html">Demo PDFs</a>
-  <a href="gk-pdfs.html">GK PDFs</a>
-  <a href="jkssb-updates.html">JKSSB Updates</a>
-  <a href="feedback.html">Feedback</a>
-  <a href="contact.html">Contact Us</a>
-</nav>
-
-<div class="search-box" id="searchBox">
-  <input type="text" placeholder="Search..." />
-</div>
-
 
   <!-- ================= MAIN CONTENT ================= -->
   <main>
-
-    <!-- Glassmorphism Panel -->
-   <section class="glass-card">
-
-
+    <section class="glass-card">
       <h1>JKSSB Drivers Academy</h1>
 
       <p>
@@ -68,32 +132,39 @@
       <p>
         Use the navigation above to explore courses and study material.
       </p>
-
     </section>
-
   </main>
 
+  <!-- ================= FLOATING WHITE FROST NAV ================= -->
+  <div class="white-frost-nav">
+    <a href="index.html" class="active">🏠 Home</a>
+    <a href="my-courses.html">📚 Courses</a>
+    <a href="mock-tests.html">📝 Tests</a>
+    <a href="gk-pdfs.html">🔍 Search</a>
+    <a href="contact.html">⚙️ Contact</a>
+  </div>
+
   <!-- ================= FOOTER ================= -->
-  <footer style="
-    margin-top: 60px;
-    padding: 20px;
-    text-align: center;
-    font-size: 13px;
-    opacity: 0.85;
-  ">
-
-    <p>
-      © JKSSB Drivers Academy. All rights reserved.
-    </p>
-
+  <footer style="margin-top:60px;padding:20px;text-align:center;font-size:13px;opacity:0.85;">
+    <p>© JKSSB Drivers Academy. All rights reserved.</p>
     <p>
       <a href="privacy-policy.html">Privacy Policy</a> |
       <a href="terms-and-conditions.html">Terms & Conditions</a> |
       <a href="refund-policy.html">Refund Policy</a> |
       <a href="copyright-warning.html">Copyright Warning</a>
     </p>
-
   </footer>
+
+  <!-- JS (already used by hamburger/search) -->
+  <script>
+    function toggleMenu() {
+      document.getElementById("navMenu").classList.toggle("show");
+    }
+    function toggleSearch() {
+      const box = document.getElementById("searchBox");
+      box.style.display = box.style.display === "block" ? "none" : "block";
+    }
+  </script>
 
 </body>
 </html>
