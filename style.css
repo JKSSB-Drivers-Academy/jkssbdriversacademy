@@ -1,0 +1,87 @@
+/* ===== GLOBAL RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== BODY BACKGROUND (ANIMATED GRADIENT) ===== */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(
+    -45deg,
+    #0f2027,
+    #203a43,
+    #2c5364,
+    #1b1f3b
+  );
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
+  color: #ffffff;
+  padding: 20px;
+}
+
+/* Gradient animation */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ===== NAVIGATION ===== */
+nav {
+  margin-bottom: 30px;
+  padding: 15px 20px;
+  border-radius: 14px;
+
+  /* Glass effect */
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  margin-right: 12px;
+  font-size: 14px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* ===== HEADINGS ===== */
+h1 {
+  margin-bottom: 15px;
+  font-size: 28px;
+}
+
+/* ===== PARAGRAPHS & LISTS ===== */
+p {
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+ul {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+li {
+  margin-bottom: 6px;
+}
+
+/* ===== LINKS ===== */
+a {
+  color: #a8d8ff;
+}
