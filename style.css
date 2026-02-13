@@ -273,4 +273,21 @@ footer {
   .logo-img {
     height: 26px;   /* slightly smaller on mobile */
   }
+   /* ==============================
+   COURSE DETAILS TITLE
+============================== */
+.course-title {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 6px;
+  color: #222;
+}
+
+.subtitle {
+  text-align: center;
+  color: red;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
 }
