@@ -277,8 +277,6 @@ footer {
    COURSE DETAILS TITLE – FINAL
 ============================== */
 
-
-
 .glass-card p.subtitle {
   all: unset;
   display: block;
@@ -289,4 +287,54 @@ footer {
   text-align: center;
   margin-bottom: 24px;
 }
+   /* ==============================
+   RESPONSIVE NAV VISIBILITY
+============================== */
+
+.desktop-only {
+  display: block;
+}
+
+.mobile-only {
+  display: none;
+}
+
+/* MOBILE VIEW */
+@media (max-width: 768px) {
+
+  .menu-btn {
+    display: inline-block;
+  }
+
+  .nav-items {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 18px;
+    width: 100%;
+  }
+
+  .nav-items.show {
+    display: flex;
+  }
+
+  .desktop-only {
+    display: none;   /* hide dropdown */
+  }
+
+  .mobile-only {
+    display: block;  /* show all links */
+  }
+
+  .nav-items li a {
+    width: 100%;
+    text-align: center;
+    padding: 14px;
+  }
+
+  .logo-text {
+    display: none; /* clean mobile top bar */
+  }
+}
+
 }
