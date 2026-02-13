@@ -4,10 +4,16 @@
   <meta charset="UTF-8">
   <title>JKSSB Updates | JKSSB Drivers Academy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+
+  <!-- GLOBAL CSS SYSTEM -->
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="desktop.css" media="(min-width:769px)">
+  <link rel="stylesheet" href="mobile.css" media="(max-width:768px)">
 </head>
+
 <body>
 
+<!-- ================= NAVBAR PLACEHOLDER ================= -->
 <div id="navbar-placeholder"></div>
 
 <!-- ================= PAGE CONTENT ================= -->
@@ -46,32 +52,53 @@
     <a href="copyright-warning.html">Copyright Warning</a>
   </p>
 </footer>
+
+<!-- ================= NAVBAR LOAD + MOBILE SIDEBAR JS ================= -->
 <script>
-fetch("/jkssbdriversacademy/navbar.html")
-  .then(response => response.text())
-  .then(data => {
-    document.getElementById("navbar-placeholder").innerHTML = data;
+document.addEventListener("DOMContentLoaded", function () {
 
-    // Highlight active page
-    const currentPage = location.pathname.split("/").pop() || "index.html";
+  fetch("/jkssbdriversacademy/navbar.html")
+    .then(res => {
+      if (!res.ok) throw new Error("Navbar fetch failed");
+      return res.text();
+    })
+    .then(html => {
+      document.getElementById("navbar-placeholder").innerHTML = html;
 
-    document.querySelectorAll(".nav-items a").forEach(link => {
-      if (link.getAttribute("href") === currentPage) {
-        link.classList.add("active");
+      const profileBtn = document.getElementById("mobileProfileBtn");
+      const sidebar   = document.getElementById("mobileSidebar");
+      const overlay   = document.getElementById("msOverlay");
+      const accordion = document.querySelector(".ms-accordion");
+
+      if (!profileBtn || !sidebar || !overlay) return;
+
+      function toggleSidebar() {
+        sidebar.classList.toggle("open");
+        overlay.classList.toggle("show");
+        profileBtn.classList.toggle("active");
+
+        document.body.style.overflow =
+          sidebar.classList.contains("open") ? "hidden" : "";
       }
-    });
-  })
-  .catch(err => console.error("Navbar load failed:", err));
 
-function toggleMobileMenu() {
-  const nav = document.getElementById("navItems");
-  if (nav) {
-    nav.classList.toggle("show");
-  }
-}
+      profileBtn.addEventListener("click", toggleSidebar);
+      overlay.addEventListener("click", toggleSidebar);
+
+      if (accordion) {
+        accordion.addEventListener("click", () => {
+          const expanded = accordion.getAttribute("aria-expanded") === "true";
+          accordion.setAttribute("aria-expanded", String(!expanded));
+        });
+      }
+
+      sidebar.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", toggleSidebar);
+      });
+    })
+    .catch(err => console.error(err));
+
+});
 </script>
-
 
 </body>
 </html>
-
