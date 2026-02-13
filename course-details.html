@@ -1,647 +1,399 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Course Details | JKSSB Drivers Academy</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Course Details | JKSSB Drivers Academy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- GLOBAL CSS SYSTEM -->
-  <link rel="stylesheet" href="base.css">
-  <link rel="stylesheet" href="desktop.css" media="(min-width: 769px)">
-  <link rel="stylesheet" href="mobile.css" media="(max-width: 768px)">
+<!-- GLOBAL CSS -->
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="desktop.css" media="(min-width:769px)">
+<link rel="stylesheet" href="mobile.css" media="(max-width:768px)">
 
-  <!-- TABLE GLASS STYLES -->
-  <style>
-    .course-title {
-      text-align: center;
-      font-size: 26px;
-      font-weight: 700;
-      color: red;
-      margin-bottom: 6px;
-    }
+<style>
+.course-title{
+  text-align:center;
+  font-size:26px;
+  font-weight:700;
+  color:red;
+  margin-bottom:6px;
+}
+.course-subtitle{
+  text-align:center;
+  font-size:15px;
+  font-weight:600;
+  color:#0066ff;
+  margin-bottom:18px;
+}
 
-    .course-subtitle {
-      text-align: center;
-      font-size: 15px;
-      font-weight: 600;
-      color: #0066ff;
-      margin-bottom: 18px;
-    }
+.glass-table{
+  width:95%;
+  margin:20px auto;
+  border-collapse:collapse;
+  background:rgba(255,255,255,.45);
+  backdrop-filter:blur(28px);
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 18px 40px rgba(0,0,0,.25);
+}
+.glass-table th,.glass-table td{
+  padding:10px;
+  border:1px solid rgba(200,200,200,.6);
+  text-align:center;
+  font-size:14px;
+}
+.glass-table th{
+  background:rgba(0,102,255,.85);
+  color:#fff;
+}
 
-    table.glass-table {
-      width: 95%;
-      margin: 20px auto;
-      border-collapse: collapse;
+.toggle-btn{
+  cursor:pointer;
+  color:#0066ff;
+  text-decoration:underline;
+  font-size:13px;
+}
+.details{
+  display:none;
+  margin-top:8px;
+  padding:12px;
+  background:rgba(255,255,255,.55);
+  backdrop-filter:blur(16px);
+  border-radius:12px;
+  font-size:13px;
+  text-align:left;
+}
 
-      background: rgba(255, 255, 255, 0.45);
-      backdrop-filter: blur(28px);
-      -webkit-backdrop-filter: blur(28px);
+.buy-btn{
+  background:#28a745;
+  color:#fff;
+  padding:6px 12px;
+  border-radius:8px;
+  text-decoration:none;
+  font-size:13px;
+}
+.old-price{color:red;text-decoration:line-through;}
+.new-price{color:green;font-weight:bold;}
+.discount{font-size:12px;}
 
-      border-radius: 18px;
-      overflow: hidden;
+.blinking-text{
+  color:red;
+  font-weight:bold;
+  animation:blink 1.2s infinite;
+}
+@keyframes blink{50%{opacity:.3}}
 
-      box-shadow:
-        0 18px 40px rgba(0,0,0,0.25),
-        inset 0 1px 0 rgba(255,255,255,0.6);
-    }
+.back-btn{
+  display:block;
+  margin:25px auto 0;
+  padding:10px 22px;
+  border-radius:22px;
+  background:rgba(255,255,255,.35);
+  border:1px solid rgba(255,255,255,.6);
+  text-decoration:none;
+  color:#111;
+  font-weight:600;
+}
 
-    table.glass-table th,
-    table.glass-table td {
-      padding: 10px;
-      border: 1px solid rgba(200,200,200,0.6);
-      text-align: center;
-      font-size: 14px;
-    }
-
-    table.glass-table th {
-      background: rgba(0, 102, 255, 0.85);
-      color: #fff;
-      font-weight: 600;
-    }
-
-    table.glass-table td {
-      background: transparent;
-    }
-
-    .toggle-btn {
-      cursor: pointer;
-      color: #0066ff;
-      text-decoration: underline;
-      font-size: 13px;
-    }
-
-    .details {
-      display: none;
-      margin-top: 8px;
-      padding: 12px;
-
-      background: rgba(255,255,255,0.55);
-      backdrop-filter: blur(16px);
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.6);
-
-      font-size: 13px;
-      color: #111;
-      text-align: left;
-    }
-
-    .buy-btn {
-      background: #28a745;
-      color: #fff;
-      padding: 6px 12px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 13px;
-      display: inline-block;
-    }
-
-    .old-price { color: red; text-decoration: line-through; }
-    .new-price { color: green; font-weight: bold; }
-    .discount { font-size: 12px; }
-
-    .blinking-text {
-      color: red;
-      font-weight: bold;
-      animation: blink 1.2s infinite;
-    }
-
-    @keyframes blink {
-      0%,100%{opacity:1;}
-      50%{opacity:0.3;}
-    }
-
-    .back-btn {
-      display: block;
-      width: fit-content;
-      margin: 24px auto 0;
-
-      padding: 10px 22px;
-      border-radius: 22px;
-
-      background: rgba(255,255,255,0.35);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.6);
-
-      text-decoration: none;
-      font-weight: 600;
-      color: #111;
-    }
-
-    /* MODAL */
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.7);
-      z-index: 1000;
-    }
-
-    .modal-content {
-      background: #fff;
-      margin: 5vh auto;
-      padding: 20px;
-      max-width: 600px;
-      border-radius: 12px;
-      max-height: 80vh;
-      overflow-y: auto;
-    }
-
-    .modal-close {
-      position: fixed;
-      top: 15px;
-      right: 20px;
-      font-size: 2.5em;
-      color: red;
-      cursor: pointer;
-      z-index: 1001;
-    }
-  </style>
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  z-index:1000;
+}
+.modal-content{
+  background:#fff;
+  margin:5vh auto;
+  padding:20px;
+  max-width:600px;
+  border-radius:12px;
+  max-height:80vh;
+  overflow-y:auto;
+}
+.modal-close{
+  position:fixed;
+  top:15px;
+  right:20px;
+  font-size:2.5em;
+  color:red;
+  cursor:pointer;
+}
+</style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <div id="navbar-placeholder"></div>
 
 <main class="content">
-  <section class="glass-card">
+<section class="glass-card">
 
-    <h2 class="course-title">JKSSB Driver Course Package</h2>
-    <p class="course-subtitle">
-      100% JKSSB Drivers Syllabus Covered with Mock Tests as well
-    </p>
+<h2 class="course-title">JKSSB Driver Course Package</h2>
+<p class="course-subtitle">
+100% JKSSB Drivers Syllabus Covered with Mock Tests as well
+</p>
 
-    <!-- ✅ YOUR TABLE (UNCHANGED DATA) -->
-    <table class="glass-table">
-      <!-- YOUR FULL TABLE CONTENT EXACTLY AS SENT -->
-      <!-- (I DID NOT CHANGE A SINGLE ROW OR LINK) -->
-      <!-- pasted exactly below -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>JKSSB Driver Course Package</title>
-  <style>
-    /* Remove all spacing above the heading */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f8f9fa;
-    }
-    .container {
-      width: 100%;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 10px;
-      border-radius: 2px;
-      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-    }
-    h2 {
-      text-align: center;
-      color: #333;
-      margin: 0 0 5px;
-      font-size: 1.4em;
-    }
-    h3 {
-      text-align: center;
-      color: #FF0000;
-      margin: 0;
-      font-size: 1em;
-    }
-    table {
-      width: 95%;
-      border-collapse: collapse;
-      margin-top: 10px;
-      font-size: 1em;
-      background-color: transparent;
-    }
-    /* Set fixed column widths */
-    colgroup col.package { width: 15%; }
-    colgroup col.description { width: 40%; }
-    colgroup col.price { width: 25%; }
-    colgroup col.buy { width: 20%; }
-    th, td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: center;
-    }
-    th {
-      background: #007bff;
-      color: white;
-      font-size: 1em;
-    }
-    td {
-      background-color: transparent;
-    }
-    .buy-btn {
-      background: #28a745;
-      color: white;
-      text-decoration: none;
-      padding: 4px 8px;
-      border-radius: 5px;
-      display: inline-block;
-      font-size: 0.8em;
-    }
-    .buy-btn:hover {
-      background: #218838;
-    }
-    .old-price {
-      color: red;
-      text-decoration: line-through;
-      margin-right: 5px;
-    }
-    .new-price {
-      color: green;
-      font-weight: bold;
-    }
-    .discount {
-      font-size: 0.8em;
-    }
-    .details {
-      display: none;
-      text-align: left;
-      padding: 8px;
-      background: #f1f1f1;
-      border-radius: 5px;
-      margin-top: 5px;
-      font-size: 0.8em;
-    }
-    .toggle-btn {
-      cursor: pointer;
-      color: blue;
-      text-decoration: underline;
-      font-size: 0.8em;
-    }
-    /* Modal styles for mobile */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0, 0, 0, 0.7);
-    }
-    .modal-content {
-      position: relative;
-      background-color: #fff;
-      margin: 0 auto;
-      padding: 20px;
-      width: 90%;
-      max-width: 600px;
-      border-radius: 10px;
-      font-size: 1em;
-      color: #333;
-      max-height: 50vh;
-      overflow-y: auto;
-    }
-    /* Close button moved out of modal-content so it remains fixed */
-    .modal-close {
-      position: fixed;
-      top: 20px;
-      right: 20px; /* Positioned towards right with padding */
-      font-size: 2.5em; /* Bigger size */
-      font-weight: bold;
-      color: red;
-      cursor: pointer;
-      z-index: 1001; /* Ensures it stays above modal content */
-      animation: bounce 1.5s infinite;
-    }
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-      40% { transform: translateY(-10px); }
-      60% { transform: translateY(-5px); }
-    }
-    /* Responsive adjustments for mobile devices */
-    @media (max-width: 600px) {
-      .modal-content {
-        width: 95%;
-        max-width: none;
-        max-height: 80vh;
-      }
-      body {
-        font-size: 12px;
-      }
-      .container {
-        width: 100%;
-        max-width: 100%;
-        padding: 10px;
-      }
-      h2 {
-        font-size: 1.2em;
-      }
-      h3 {
-        font-size: 0.9em;
-      }
-      table {
-        font-size: 0.9em;
-      }
-      th, td {
-        padding: 6px;
-      }
-      .buy-btn {
-        padding: 3px 6px;
-        font-size: 0.75em;
-      }
-      .details {
-        padding: 5px;
-        font-size: 0.75em;
-      }
-      .toggle-btn {
-        font-size: 0.75em;
-      }
-    }
-    /* Offer container styles */
-    .offer-container {
-      text-align: center;
-    }
-    .blinking-text {
-      color: red;
-      font-weight: bold;
-      font-size: 1em;
-      animation: blink 1.2s infinite ease-in-out;
-      margin: 2px 0;
-    }
-    @keyframes blink {
-      0% { opacity: 1; }
-      50% { opacity: 0.3; }
-      100% { opacity: 1; }
-    }
-    /* Course title styles */
-    .course-title {
-      font-weight: bold;
-      font-size: 1.5em;
-    }
-  </style>
-  <script>
-    function toggleDetails(id) {
-      if (window.innerWidth <= 600) {
-        var details = document.getElementById(id);
-        document.getElementById('modal-body').innerHTML = details.innerHTML;
-        document.getElementById('modal').style.display = 'block';
-      } else {
-        var details = document.getElementById(id);
-        details.style.display = (details.style.display === "none" || details.style.display === "") ? "block" : "none";
-      }
-    }
-    function closeModal() {
-      document.getElementById('modal').style.display = 'none';
-    }
-    window.onclick = function(event) {
-      var modal = document.getElementById('modal');
-      if (event.target == modal) {
-        modal.style.display = 'none';
-      }
-    }
-  </script>
-</head>
-<body>
-  <div class="container">
-    <h2 class="course-title">JKSSB Driver Course Package</h2>
-    <h3>100% JKSSB Drivers Syllabus Covered with Mock Tests as well</h3>
-  </div>
-  <table>
-    <colgroup>
-      <col class="package">
-      <col class="description">
-      <col class="price">
-      <col class="buy">
-    </colgroup>
-    <tr>
-      <th>Package</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Buy Now</th>
-    </tr>
-    <!-- Full Course Row -->
-    <tr>
-  <td>
-    <b>Full Course- All </b><br>
-<i>(Notes, Video Lectures+ 2500+ MCQ Book)+ <span style="color:red; font-weight:bold; animation: blink 2s infinite ease-in-out;">Free</span> MVAct Mcq Book</i>
-  </td>
-      <td>
-        <span class="toggle-btn" onclick="toggleDetails('full-details')">Click To View JKSSB FULL Syllabus ▼</span>
-        <div id="full-details" class="details">
-          <b>Part I - Traffic Rules and Signalling</b><br>
-          1. Traffic Police hand signals<br>
-          2. Basic Road Rules, driving methods and speed limits, Understanding Signals<br>
-          3. Hand signals while driving<br>
-          4. Traffic light signals<br>
-          5. Road map reading<br>
-          6. Knowledge of traffic signages for road safety<br>
-          7. Fitness to drive<br>
-          8. First aid kit<br>
-          9. Good health & Road safety<br><br>
-          <b>Part II - MV Act,1988 & CMV Rules,1989</b><br>
-          1. Basic knowledge about provisions of the Motor Vehicle Act<br>
-          2. Awareness about documents required for driving and offence related<br>
-          3. Registration<br>
-          4. Licensing<br>
-          5. Insurance<br><br>
-          <b>Part III - Motor Parts and Its Repair</b><br>
-          1. Identification of major assemblies of vehicle<br>
-          2. Knowledge of daily and periodic inspection<br>
-          3. Knowledge of fault diagnosis in tyre and its changing procedure<br>
-          4. Knowledge of fuel pump, clutch and brake working and their air bleeding procedure<br>
-          5. Lubrication grades used in vehicle for engine, transmission, differential, suspension<br>
-          6. Knowledge about servicing schedule and service centres location<br>
-          7. Knowledge of different starting methods<br>
-          8. Knowledge of dashboard symbols
-        </div>
-      </td>
-      <td>
-        <span class="old-price">₹1999</span>
-        <span class="new-price">
-          <s style="text-decoration-color: red; text-decoration-thickness: 2px;"></s> <br>
-          <span style="font-weight: bold; font-size: 1.2em;">₹1149</span> <br>
-          <span class="discount">(42% OFF)</span>
-        </span>
-      </td>
-      <td><a href="https://payments.cashfree.com/forms?code=jkssbfullcourse&formId=FULLCOURSE" class="buy-btn" target="_blank">BUY NOW</a></td>
-    </tr>
-    <!-- Part I Row -->
-    <tr>
-      <td><b>Part I</b></td>
-      <td>
-        <span class="toggle-btn" onclick="toggleDetails('part1-details')">Click To View Detailed Syllabus▼</span>
-        <div id="part1-details" class="details">
-          <b>Traffic Rules and Signalling</b><br>
-          1. Traffic Police hand signals<br>
-          2. Basic Road Rules, driving methods and speed limits, Understanding Signals<br>
-          3. Hand signals while driving<br>
-          4. Traffic light signals<br>
-          5. Road map reading<br>
-          6. Knowledge of traffic signages for road safety<br>
-          7. Fitness to drive<br>
-          8. First aid kit<br>
-          9. Good health & Road safety<br>
-          10. Driving under influence of drugs/liquors<br>
-          11. Difficult driving conditions<br>
-          12. Driving on wet surface<br>
-          13. Driving in fog<br>
-          14. Night driving<br>
-          15. Running on pavement<br>
-          16. Brake failure<br>
-          17. Towing<br>
-          18. Essential knowledge about vehicle pollution (Do's and Don'ts)
-        </div>
-      </td>
-      <td>
-        <span class="old-price">₹899</span>
-        <span class="new-price">
-          <s style="text-decoration-color: red; text-decoration-thickness: 2px;"></s> <br>
-          <span style="font-weight: bold; font-size: 1.2em;">₹449</span> <br>
-          <span class="discount">(50% OFF)</span>
-        </span>
-      </td>
-      <td><a href="https://payments.cashfree.com/forms?code=jkssbcourse&formId=PART1" class="buy-btn" target="_blank">BUY NOW</a></td>
-    </tr>
-    <!-- Part II Row -->
-    <tr>
-      <td><b>Part II</b></td>
-      <td>
-        <span class="toggle-btn" onclick="toggleDetails('part2-details')">Click To View Detailed Syllabus▼</span>
-        <div id="part2-details" class="details">
-          <b>MV Act,1988 & CMV Rules,1989</b><br>
-          1. Basic knowledge about provisions of the Motor Vehicle Act<br>
-          2. Awareness about documents required for driving and offence related<br>
-          3. Registration<br>
-          4. Licensing<br>
-          5. Insurance
-        </div>
-      </td>
-      <td>
-        <span class="old-price">₹499</span>
-        <span class="new-price">
-          <s style="text-decoration-color: red; text-decoration-thickness: 2px;"></s> <br>
-          <span style="font-weight: bold; font-size: 1.2em;">₹299</span> <br>
-          <span class="discount">(40% OFF)</span>
-        </span>
-      </td>
-      <td><a href="https://payments.cashfree.com/forms?code=jkssbcoursePART2&formId=PART2" class="buy-btn" target="_blank">BUY NOW</a></td>
-    </tr>
-    <!-- Part III Row -->
-    <tr>
-      <td><b>Part III</b></td>
-      <td>
-        <span class="toggle-btn" onclick="toggleDetails('part3-details')">Click To View Detailed Syllabus▼</span>
-        <div id="part3-details" class="details">
-          <b>Motor Parts and Its Repair</b><br>
-          1. Identification of major assemblies of vehicle<br>
-          2. Knowledge of daily and periodic inspection<br>
-          3. Knowledge of fault diagnosis in tyre and its changing procedure<br>
-          4. Knowledge of fuel pump, clutch and brake working and their air bleeding procedure<br>
-          5. Lubrication grades used in vehicle for engine, transmission, differential, suspension<br>
-          6. Knowledge about servicing schedule and service centres location<br>
-          7. Knowledge of different starting methods<br>
-          8. Knowledge of dashboard symbols
-        </div>
-      </td>
-      <td>
-        <span class="old-price">₹899</span>
-        <span class="new-price">
-          <s style="text-decoration-color: red; text-decoration-thickness: 2px;"></s> <br>
-          <span style="font-weight: bold; font-size: 1.2em;">₹449</span> <br>
-          <span class="discount">(50% OFF)</span>
-        </span>
-      </td>
-      <td><a href="https://payments.cashfree.com/forms?code=jkssbcoursepart3&formId=PART3" class="buy-btn" target="_blank">BUY NOW</a></td>
-    </tr>
-    <!-- MVAct,1988 Book Row -->
-    <tr>
-      <td><b>MVAct,1988 MCQ Book</b></td>
-      <td>
-        <span class="toggle-btn" onclick="toggleDetails('mvact-details')">Click To View Details▼</span>
-        <div id="mvact-details" class="details">
-          <img src="https://drive.google.com/uc?export=view&id=1mqYoaZnF1f25PN8x5fq_gLPKVKa0xQrx" alt="MV Act,1988 Book Image" style="max-width:100%; height:auto;">
-          <br>
-          <b>MV Act,1988 & CMV Rules,1989</b><br>
-          Complete Motor Vehicle Act,1988 MCQ book with More than 300 Updated  MCQs,Amendments Updated as well. Most important MCQs for JKSSB.
-        </div>
-      </td>
-      <td>
-        <span class="old-price">₹299</span>
-        <span class="new-price">
-        <br>  <span style="font-weight: bold; font-size: 1.2em;">₹199</span> </br>
-          <span class="discount">(33% OFF)</span>
-        </span>
-      </td>
-      <td><a href="https://payments.cashfree.com/forms?code=jkssbcoursemvact&formId=MVACT" class="buy-btn" target="_blank">BUY NOW</a></td>
-    </tr>
-    <!-- New MCQBook-FullCourse Row -->
-    <tr>
-      <td>
-        <span class="blinking-text">New</span><br>
-        <b>MCQ Book-Fully Syllabus Covered</b>
+<table class="glass-table">
+<tr>
+<th>Package</th>
+<th>Description</th>
+<th>Price</th>
+<th>Buy Now</th>
+</tr>
+
+<!-- FULL COURSE -->
+<tr>
+<td>
+<b>Full Course- All</b><br>
+<i>(Notes, Video Lectures+ 2500+ MCQ Book)+
+<span class="blinking-text">Free</span> MVAct MCQ Book</i>
+</td>
+<td>
+<span class="toggle-btn" onclick="toggleDetails('full-details')">
+Click To View JKSSB FULL Syllabus ▼
+</span>
+
+<div id="full-details" class="details">
+<b>Part I - Traffic Rules and Signalling</b><br>
+1. Traffic Police hand signals<br>
+2. Basic Road Rules, driving methods and speed limits, Understanding Signals<br>
+3. Hand signals while driving<br>
+4. Traffic light signals<br>
+5. Road map reading<br>
+6. Knowledge of traffic signages for road safety<br>
+7. Fitness to drive<br>
+8. First aid kit<br>
+9. Good health & Road safety<br><br>
+
+<b>Part II - MV Act,1988 & CMV Rules,1989</b><br>
+1. Basic knowledge about provisions of the Motor Vehicle Act<br>
+2. Awareness about documents required for driving and offence related<br>
+3. Registration<br>
+4. Licensing<br>
+5. Insurance<br><br>
+
+<b>Part III - Motor Parts and Its Repair</b><br>
+1. Identification of major assemblies of vehicle<br>
+2. Knowledge of daily and periodic inspection<br>
+3. Knowledge of fault diagnosis in tyre and its changing procedure<br>
+4. Knowledge of fuel pump, clutch and brake working and their air bleeding procedure<br>
+5. Lubrication grades used in vehicle for engine, transmission, differential, suspension<br>
+6. Knowledge about servicing schedule and service centres location<br>
+7. Knowledge of different starting methods<br>
+8. Knowledge of dashboard symbols
+</div>
+</td>
+
+<td>
+<span class="old-price">₹1999</span><br>
+<span class="new-price">₹1149</span><br>
+<span class="discount">(42% OFF)</span>
+</td>
+
+<td>
+<a href="https://payments.cashfree.com/forms?code=jkssbfullcourse&formId=FULLCOURSE"
+class="buy-btn" target="_blank">BUY NOW</a>
+</td>
+</tr>
+<!-- PART I -->
+<tr>
+<td><b>Part I</b></td>
+<td>
+<span class="toggle-btn" onclick="toggleDetails('part1-details')">
+Click To View Detailed Syllabus ▼
+</span>
+<div id="part1-details" class="details">
+<b>Traffic Rules and Signalling</b><br>
+1. Traffic Police hand signals<br>
+2. Basic Road Rules, driving methods and speed limits, Understanding Signals<br>
+3. Hand signals while driving<br>
+4. Traffic light signals<br>
+5. Road map reading<br>
+6. Knowledge of traffic signages for road safety<br>
+7. Fitness to drive<br>
+8. First aid kit<br>
+9. Good health & Road safety<br>
+10. Driving under influence of drugs/liquors<br>
+11. Difficult driving conditions<br>
+12. Driving on wet surface<br>
+13. Driving in fog<br>
+14. Night driving<br>
+15. Running on pavement<br>
+16. Brake failure<br>
+17. Towing<br>
+18. Essential knowledge about vehicle pollution (Do's and Don'ts)
+</div>
+</td>
+<td>
+<span class="old-price">₹899</span><br>
+<span class="new-price">₹449</span><br>
+<span class="discount">(50% OFF)</span>
+</td>
+<td>
+<a href="https://payments.cashfree.com/forms?code=jkssbcourse&formId=PART1"
+class="buy-btn" target="_blank">BUY NOW</a>
+</td>
+</tr>
+
+<!-- PART II -->
+<tr>
+<td><b>Part II</b></td>
+<td>
+<span class="toggle-btn" onclick="toggleDetails('part2-details')">
+Click To View Detailed Syllabus ▼
+</span>
+<div id="part2-details" class="details">
+<b>MV Act,1988 & CMV Rules,1989</b><br>
+1. Basic knowledge about provisions of the Motor Vehicle Act<br>
+2. Awareness about documents required for driving and offence related<br>
+3. Registration<br>
+4. Licensing<br>
+5. Insurance
+</div>
+</td>
+<td>
+<span class="old-price">₹499</span><br>
+<span class="new-price">₹299</span><br>
+<span class="discount">(40% OFF)</span>
+</td>
+<td>
+<a href="https://payments.cashfree.com/forms?code=jkssbcoursePART2&formId=PART2"
+class="buy-btn" target="_blank">BUY NOW</a>
+</td>
+</tr>
+
+<!-- PART III -->
+<tr>
+<td><b>Part III</b></td>
+<td>
+<span class="toggle-btn" onclick="toggleDetails('part3-details')">
+Click To View Detailed Syllabus ▼
+</span>
+<div id="part3-details" class="details">
+<b>Motor Parts and Its Repair</b><br>
+1. Identification of major assemblies of vehicle<br>
+2. Knowledge of daily and periodic inspection<br>
+3. Knowledge of fault diagnosis in tyre and its changing procedure<br>
+4. Knowledge of fuel pump, clutch and brake working and their air bleeding procedure<br>
+5. Lubrication grades used in vehicle for engine, transmission, differential, suspension<br>
+6. Knowledge about servicing schedule and service centres location<br>
+7. Knowledge of different starting methods<br>
+8. Knowledge of dashboard symbols
+</div>
+</td>
+<td>
+<span class="old-price">₹899</span><br>
+<span class="new-price">₹449</span><br>
+<span class="discount">(50% OFF)</span>
+</td>
+<td>
+<a href="https://payments.cashfree.com/forms?code=jkssbcoursepart3&formId=PART3"
+class="buy-btn" target="_blank">BUY NOW</a>
+</td>
+</tr>
+
+<!-- MV ACT BOOK -->
+<tr>
+<td><b>MVAct,1988 MCQ Book</b></td>
+<td>
+<span class="toggle-btn" onclick="toggleDetails('mvact-details')">
+Click To View Details ▼
+</span>
+<div id="mvact-details" class="details">
+<img src="https://drive.google.com/uc?export=view&id=1mqYoaZnF1f25PN8x5fq_gLPKVKa0xQrx"
+style="max-width:100%;"><br><br>
+<b>MV Act,1988 & CMV Rules,1989</b><br>
+Complete Motor Vehicle Act MCQ book with more than 300 updated MCQs.
+</div>
+</td>
+<td>
+<span class="old-price">₹299</span><br>
+<span class="new-price">₹199</span><br>
+<span class="discount">(33% OFF)</span>
+</td>
+<td>
+<a href="https://payments.cashfree.com/forms?code=jkssbcoursemvact&formId=MVACT"
+class="buy-btn" target="_blank">BUY NOW</a>
+</td>
+</tr>
+
+<!-- MCQ BOOK -->
+<tr>
+<td>
+<span class="blinking-text">New</span><br>
+<b>MCQ Book – Fully Syllabus Covered</b><br>
 <i>2500+ MCQs with answers</i>
-      </td>
-      <td>
-        This is the one of the JKSSB most Expected and according to jkssb syllabus MCQs book with full syllabus coverage.
-      </td>
-      <td>
-        <span class="old-price">₹499</span>
-        <span class="new-price">₹299</span><br>
-        <span class="discount">(40% OFF)</span>
-      </td>
-      <td>
-        <a href="https://payments.cashfree.com/forms?code=MCQBOOK" class="buy-btn" target="_blank">BUY NOW</a>
-      </td>
-    </tr> <!--Old Driver Papers -->
-    <tr>
-      <td>
-        <span class="blinking-text">New</span><br>
-        <b>Old Driver Papers</b>
-      </td>
-      <td>
-        JKSSB and other boards previous Drivers papers 
-      </td>
-      <td>
-        <span class="old-price">₹49</span>
-        <span class="new-price">₹19</span><br>
-        <span class="discount">(60% OFF)</span>
-      </td>
-      <td>
-        <a href="https://payments.cashfree.com/forms?code=OldDriverPapers" class="buy-btn" target="_blank">BUY NOW</a>
-      </td>
-    </tr>
+</td>
+<td>
+Expected JKSSB MCQ book with full syllabus coverage.
+</td>
+<td>
+<span class="old-price">₹499</span><br>
+<span class="new-price">₹299</span><br>
+<span class="discount">(40% OFF)</span>
+</td>
+<td>
+<a href="https://payments.cashfree.com/forms?code=MCQBOOK"
+class="buy-btn" target="_blank">BUY NOW</a>
+</td>
+</tr>
 
+<!-- OLD PAPERS -->
+<tr>
+<td>
+<span class="blinking-text">New</span><br>
+<b>Old Driver Papers</b>
+</td>
+<td>
+JKSSB and other boards previous drivers papers
+</td>
+<td>
+<span class="old-price">₹49</span><br>
+<span class="new-price">₹19</span><br>
+<span class="discount">(60% OFF)</span>
+</td>
+<td>
+<a href="https://payments.cashfree.com/forms?code=OldDriverPapers"
+class="buy-btn" target="_blank">BUY NOW</a>
+</td>
+</tr>
+</table>
 
-     </table>
+<!-- MODAL -->
+<div id="modal" class="modal">
+<span class="modal-close" onclick="closeModal()">&times;</span>
+<div class="modal-content">
+<div id="modal-body"></div>
+</div>
+</div>
 
-    <div id="modal" class="modal">
-      <span class="modal-close" onclick="closeModal()">&times;</span>
-      <div class="modal-content">
-        <div id="modal-body"></div>
-      </div>
-    </div>
+<a href="javascript:history.back()" class="back-btn">← Back</a>
 
-    <a href="javascript:history.back()" class="back-btn">← Back</a>
-
-  </section>
+</section>
 </main>
 
 <footer>
-  <p>© JKSSB Drivers Academy. All rights reserved.</p>
+<p>© JKSSB Drivers Academy. All rights reserved.</p>
 </footer>
 
 <script>
-function toggleDetails(id) {
-  if (window.innerWidth <= 600) {
-    document.getElementById('modal-body').innerHTML =
+function toggleDetails(id){
+  if(window.innerWidth<=600){
+    document.getElementById('modal-body').innerHTML=
       document.getElementById(id).innerHTML;
-    document.getElementById('modal').style.display = 'block';
-  } else {
-    const el = document.getElementById(id);
-    el.style.display = el.style.display === "block" ? "none" : "block";
+    document.getElementById('modal').style.display='block';
+  }else{
+    const el=document.getElementById(id);
+    el.style.display=el.style.display==='block'?'none':'block';
   }
 }
-function closeModal() {
-  document.getElementById('modal').style.display = 'none';
+function closeModal(){
+  document.getElementById('modal').style.display='none';
 }
+fetch("/jkssbdriversacademy/navbar.html")
+.then(r=>r.text())
+.then(d=>document.getElementById("navbar-placeholder").innerHTML=d);
 </script>
 
 </body>
