@@ -368,7 +368,22 @@
   </style>
 </head>
 <body>
-
+<!-- ORIGINAL TABLE JS (UNCHANGED) -->
+<script>
+  function toggleDetails(id) {
+    if (window.innerWidth <= 600) {
+      document.getElementById('modal-body').innerHTML =
+        document.getElementById(id).innerHTML;
+      document.getElementById('modal').style.display = 'block';
+    } else {
+      const el = document.getElementById(id);
+      el.style.display = el.style.display === "block" ? "none" : "block";
+    }
+  }
+  function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+  }
+</script>
 
   
   <table>
