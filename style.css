@@ -24,20 +24,18 @@ body {
   background-attachment: fixed;
 }
 
-
-/* Subtle frosty overlay */
+/* Frost overlay */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
   z-index: -1;
 }
 
 /* ==============================
-   NAVBAR – CENTERED & FROSTED
+   NAVBAR – DESKTOP (UNCHANGED)
 ============================== */
 .navbar {
   position: fixed;
@@ -53,15 +51,12 @@ body::before {
 
   background: rgba(255, 255, 255, 0.50);
   backdrop-filter: blur(60px);
-  -webkit-backdrop-filter: blur(28px);
 
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
 }
 
-/* ==============================
-   LOGO (IMAGE + TEXT)
-============================== */
+/* Logo */
 .logo-wrap {
   display: flex;
   align-items: center;
@@ -70,127 +65,42 @@ body::before {
 }
 
 .logo-img {
-  height: 34px;        /* ✅ SMALL, PROFESSIONAL SIZE */
-  width: auto;
+  height: 34px;
 }
 
 .logo-text {
   font-size: 16px;
   font-weight: 600;
-  color: #111;
 }
 
-/* ==============================
-   HAMBURGER (MOBILE ONLY)
-============================== */
+/* Desktop hamburger NEVER used */
 .menu-btn {
   display: none;
-  background: none;
-  border: none;
-  font-size: 22px;
-  cursor: pointer;
-  margin-right: 12px;
-  color: #111;
 }
 
-/* ==============================
-   NAV ITEMS (CENTERED ROW)
-============================== */
+/* Nav pills */
 .nav-items {
   list-style: none;
   display: flex;
   justify-content: center;
-  align-items: center;
-
   gap: 14px;
-  margin: 0;
-  padding: 0;
-
-  white-space: nowrap;
-}
-
-/* ==============================
-   NAV BUTTONS – WATERY GLASS
-============================== */
-.nav-items li {
-  position: relative;
 }
 
 .nav-items li a {
   padding: 12px 22px;
   text-decoration: none;
-  font-weight: 500;
   color: #111;
-
   background: rgba(255, 255, 255, 0.30);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
   border-radius: 26px;
   border: 1px solid rgba(255, 255, 255, 0.6);
-
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.6),
-    0 4px 10px rgba(0, 0, 0, 0.12);
-
-  transition:
-    background 0.3s ease,
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.3s ease;
 }
 
-/* Bubble hover */
 .nav-items li a:hover {
-  background: rgba(255, 255, 255, 0.55);
   transform: scale(1.06);
-  box-shadow:
-    0 8px 18px rgba(255, 255, 255, 0.35),
-    0 6px 14px rgba(0, 0, 0, 0.18);
 }
 
-/* Active page */
-.nav-items li a.active {
-  background: rgba(255, 255, 255, 0.6);
-}
-
-/* ==============================
-   MORE ▾ DROPDOWN
-============================== */
-.more-menu {
-  position: relative;
-}
-
-.dropdown {
-  position: absolute;
-  top: 120%;
-  left: 50%;
-  transform: translateX(-50%);
-
-  list-style: none;
-  padding: 10px;
-  margin: 0;
-
-  display: none;
-
-  background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(22px);
-  -webkit-backdrop-filter: blur(22px);
-
-  border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-  min-width: 180px;
-}
-
-.dropdown li a {
-  display: block;
-  padding: 10px 18px;
-  margin: 6px 0;
-  text-align: center;
-}
-
-/* Show dropdown on hover */
+/* Dropdown */
 .more-menu:hover .dropdown {
   display: block;
 }
@@ -200,141 +110,132 @@ body::before {
 ============================== */
 .content {
   padding-top: 170px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-inline: 20px;
 }
 
 /* ==============================
-   MAIN GLASS CARD
-============================== */
-.glass-card {
-  max-width: 1000px;
-  margin: auto;
-
-  padding: 40px;
-  border-radius: 26px;
-
-  background: rgba(0, 0, 0, 0.35);
-  color: #f5f5f5;
-
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-
-  border: 1px solid rgba(255, 255, 255, 0.2);
-
-  box-shadow:
-    0 25px 60px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-}
-
-/* ==============================
-   FOOTER
-============================== */
-footer {
-  margin-top: 60px;
-  padding: 20px;
-  text-align: center;
-  font-size: 13px;
-  opacity: 0.85;
-}
-
-/* ==============================
-   MOBILE VIEW
+   MOBILE APP-STYLE NAV
 ============================== */
 @media (max-width: 768px) {
-  .menu-btn {
-    display: inline-block;
-  }
 
+  /* HIDE DESKTOP NAV ITEMS */
   .nav-items {
-    display: none;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 14px;
-  }
-
-  .nav-items.show {
-    display: flex;
-  }
-
-  .dropdown {
-    position: static;
-    transform: none;
-    background: none;
-    backdrop-filter: none;
-    border: none;
-    box-shadow: none;
-  }
-
-  .content {
-    padding-top: 200px;
-  }
-
-  .logo-img {
-    height: 26px;   /* slightly smaller on mobile */
-  }
-   /* ==============================
-   COURSE DETAILS TITLE – FINAL
-============================== */
-
-.glass-card p.subtitle {
-  all: unset;
-  display: block;
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  color: #ff0000;
-  text-align: center;
-  margin-bottom: 24px;
-}
-   /* ==============================
-   RESPONSIVE NAV VISIBILITY
-============================== */
-
-.desktop-only {
-  display: block;
-}
-
-.mobile-only {
-  display: none;
-}
-
-/* MOBILE VIEW */
-@media (max-width: 768px) {
-
-  .menu-btn {
-    display: inline-block;
-  }
-
-  .nav-items {
-    display: none;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 18px;
-    width: 100%;
-  }
-
-  .nav-items.show {
-    display: flex;
-  }
-
-  .desktop-only {
-    display: none;   /* hide dropdown */
-  }
-
-  .mobile-only {
-    display: block;  /* show all links */
-  }
-
-  .nav-items li a {
-    width: 100%;
-    text-align: center;
-    padding: 14px;
+    display: none !important;
   }
 
   .logo-text {
-    display: none; /* clean mobile top bar */
+    display: none;
+  }
+
+  /* PROFILE ICON BUTTON */
+  #mobileProfileBtn {
+    position: fixed;
+    top: 14px;
+    left: 14px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.65);
+    backdrop-filter: blur(10px);
+    z-index: 1002;
+    cursor: pointer;
+
+    transition:
+      transform 0.35s cubic-bezier(0.22,1,0.36,1),
+      box-shadow 0.35s ease;
+  }
+
+  #mobileProfileBtn img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+
+  /* ICON ANIMATION */
+  #mobileProfileBtn.active {
+    transform: scale(0.92) rotate(-8deg);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  }
+
+  /* SIDEBAR */
+  #mobileSidebar {
+    position: fixed;
+    top: 0;
+    left: -75%;
+    width: 75%;
+    height: 100%;
+    background: rgba(255,255,255,0.28);
+    backdrop-filter: blur(18px);
+    box-shadow: 6px 0 30px rgba(0,0,0,0.25);
+    z-index: 1001;
+    transition: left 0.4s cubic-bezier(0.22,1,0.36,1);
+    overflow-y: auto;
+  }
+
+  #mobileSidebar.open {
+    left: 0;
+  }
+
+  /* OVERLAY */
+  #msOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    z-index: 1000;
+    display: none;
+  }
+
+  #msOverlay.show {
+    display: block;
+  }
+
+  /* PROFILE HEADER */
+  .ms-profile {
+    display: flex;
+    gap: 12px;
+    padding: 18px;
+    border-bottom: 1px solid rgba(255,255,255,0.4);
+  }
+
+  .ms-profile img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+  }
+
+  /* SIDEBAR LINKS */
+  .ms-nav a,
+  .ms-legal a,
+  .ms-accordion {
+    display: block;
+    margin: 8px 14px;
+    padding: 14px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.6);
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  /* ACCORDION */
+  .ms-accordion-panel {
+    display: none;
+    padding-left: 12px;
+  }
+
+  .ms-accordion[aria-expanded="true"] + .ms-accordion-panel {
+    display: block;
   }
 }
 
+/* ==============================
+   DESKTOP SAFETY
+============================== */
+@media (min-width: 769px) {
+  #mobileProfileBtn,
+  #mobileSidebar,
+  #msOverlay {
+    display: none !important;
+  }
 }
