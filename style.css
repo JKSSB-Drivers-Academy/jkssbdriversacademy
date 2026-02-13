@@ -276,18 +276,26 @@ footer {
    /* ==============================
    COURSE DETAILS TITLE
 ============================== */
+/* ==============================
+   COURSE DETAILS TITLE (FORCE)
+============================== */
 .course-title {
-  text-align: center;
+  text-align: center !important;
   font-size: 28px;
+  font-weight: 700;
+  color: #000 !important;
   margin-bottom: 6px;
-  color: #222;
 }
 
+/* Subtitle below title */
 .subtitle {
-  text-align: center;
-  color: red;
+  display: block;
+  text-align: center !important;
+  color: #ff0000 !important;
   font-weight: 600;
+  font-size: 16px;
   margin-bottom: 24px;
 }
+
 
 }
