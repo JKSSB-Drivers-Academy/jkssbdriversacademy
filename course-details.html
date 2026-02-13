@@ -367,27 +367,6 @@
       font-size: 1.5em;
     }
   </style>
-  <script>
-    function toggleDetails(id) {
-      if (window.innerWidth <= 600) {
-        var details = document.getElementById(id);
-        document.getElementById('modal-body').innerHTML = details.innerHTML;
-        document.getElementById('modal').style.display = 'block';
-      } else {
-        var details = document.getElementById(id);
-        details.style.display = (details.style.display === "none" || details.style.display === "") ? "block" : "none";
-      }
-    }
-    function closeModal() {
-      document.getElementById('modal').style.display = 'none';
-    }
-    window.onclick = function(event) {
-      var modal = document.getElementById('modal');
-      if (event.target == modal) {
-        modal.style.display = 'none';
-      }
-    }
-  </script>
 </head>
 <body>
 
