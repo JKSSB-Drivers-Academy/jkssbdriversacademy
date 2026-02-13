@@ -640,6 +640,9 @@
 </footer>
 <nav class="navbar">
 
+  <!-- HAMBURGER (MOBILE ONLY) -->
+  <button class="menu-btn" onclick="toggleMobileMenu()">☰</button>
+
   <!-- LOGO -->
   <a href="index.html" class="logo-wrap">
     <img src="logo.png" alt="JKSSB Drivers Academy Logo" class="logo-img">
@@ -649,14 +652,17 @@
   <!-- NAV ITEMS -->
   <ul class="nav-items" id="navItems">
     <li><a href="index.html">Home</a></li>
-    <li><a href="course-details.html" class="active">Course Details</a></li>
-    <li><a href="my-courses.html" class="active">My Courses</a></li>
+    <li><a href="course-details.html">Course Details</a></li>
+    <li><a href="my-courses.html">My Courses</a></li>
     <li><a href="mock-tests.html">Mock / MCQ Tests</a></li>
-    <li><a href="demo-pdfs.html">Demo PDFs</a></li>  <li class="more-menu">
+    <li><a href="demo-pdfs.html">Demo PDFs</a></li>
+
+    <!-- DESKTOP DROPDOWN (UNCHANGED) -->
+    <li class="more-menu">
       <a href="#">More ▾</a>
       <ul class="dropdown">
-         <li><a href="gk-pdfs.html">GK PDFs</a></li>
-         <li><a href="jkssb-updates.html">JKSSB Updates</a></li>
+        <li><a href="gk-pdfs.html">GK PDFs</a></li>
+        <li><a href="jkssb-updates.html">JKSSB Updates</a></li>
         <li><a href="feedback.html">Feedback</a></li>
         <li><a href="contact.html">Contact Us</a></li>
       </ul>
@@ -664,6 +670,7 @@
   </ul>
 
 </nav>
+
 
 </body>
 </html>
