@@ -13,10 +13,9 @@
 
 <body>
 
-<!-- ================= NAVBAR PLACEHOLDER ================= -->
+<!-- NAVBAR PLACEHOLDER -->
 <div id="navbar-placeholder"></div>
 
-<!-- ================= PAGE CONTENT ================= -->
 <main class="content">
   <section class="glass-card">
 
@@ -42,63 +41,11 @@
   </section>
 </main>
 
-<!-- ================= FOOTER ================= -->
-<footer>
-  <p>© JKSSB Drivers Academy. All rights reserved.</p>
-  <p>
-    <a href="privacy-policy.html">Privacy Policy</a> |
-    <a href="terms-and-conditions.html">Terms & Conditions</a> |
-    <a href="refund-policy.html">Refund Policy</a> |
-    <a href="copyright-warning.html">Copyright Warning</a>
-  </p>
-</footer>
+<!-- FOOTER PLACEHOLDER -->
+<div id="footer-placeholder"></div>
 
-<!-- ================= NAVBAR LOAD + MOBILE SIDEBAR JS ================= -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-  fetch("/jkssbdriversacademy/navbar.html")
-    .then(res => {
-      if (!res.ok) throw new Error("Navbar fetch failed");
-      return res.text();
-    })
-    .then(html => {
-      document.getElementById("navbar-placeholder").innerHTML = html;
-
-      const profileBtn = document.getElementById("mobileProfileBtn");
-      const sidebar   = document.getElementById("mobileSidebar");
-      const overlay   = document.getElementById("msOverlay");
-      const accordion = document.querySelector(".ms-accordion");
-
-      if (!profileBtn || !sidebar || !overlay) return;
-
-      function toggleSidebar() {
-        sidebar.classList.toggle("open");
-        overlay.classList.toggle("show");
-        profileBtn.classList.toggle("active");
-
-        document.body.style.overflow =
-          sidebar.classList.contains("open") ? "hidden" : "";
-      }
-
-      profileBtn.addEventListener("click", toggleSidebar);
-      overlay.addEventListener("click", toggleSidebar);
-
-      if (accordion) {
-        accordion.addEventListener("click", () => {
-          const expanded = accordion.getAttribute("aria-expanded") === "true";
-          accordion.setAttribute("aria-expanded", String(!expanded));
-        });
-      }
-
-      sidebar.querySelectorAll("a").forEach(link => {
-        link.addEventListener("click", toggleSidebar);
-      });
-    })
-    .catch(err => console.error(err));
-
-});
-</script>
+<!-- MASTER SCRIPT -->
+<script src="/jkssbdriversacademy/app.js"></script>
 
 </body>
 </html>
