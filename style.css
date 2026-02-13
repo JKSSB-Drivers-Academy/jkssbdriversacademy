@@ -50,14 +50,25 @@ body::before {
 
   padding: 14px 22px;
 
-  background: rgba(255, 255, 255, 0.10); /* ~10% transparency */
+  background: rgba(255, 255, 255, 0.10);
   backdrop-filter: blur(26px);
   -webkit-backdrop-filter: blur(26px);
 
   border-bottom: 1px solid rgba(255, 255, 255, 0.45);
 
-  box-shadow:
-    0 8px 20px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+
+  overflow-x: auto;               /* allow horizontal scroll if needed */
+  white-space: nowrap;
+}
+
+/* Hide scrollbar visually (still scrollable) */
+.navbar::-webkit-scrollbar {
+  height: 6px;
+}
+.navbar::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.15);
+  border-radius: 10px;
 }
 
 /* ==============================
@@ -67,6 +78,8 @@ body::before {
   font-size: 18px;
   font-weight: bold;
   color: #111;
+  margin-right: 18px;
+  white-space: nowrap;
 }
 
 /* ==============================
@@ -83,12 +96,15 @@ body::before {
 }
 
 /* ==============================
-   NAV ITEMS – WATERY BUTTONS
+   NAV ITEMS – ONE LINE, WATERY
 ============================== */
 .nav-items {
   list-style: none;
   display: flex;
   gap: 10px;
+
+  flex-wrap: nowrap;        /* 🔒 no wrapping */
+  white-space: nowrap;      /* 🔒 single line */
 }
 
 .nav-items li a {
@@ -96,6 +112,8 @@ body::before {
   text-decoration: none;
   font-weight: 500;
   color: #111;
+
+  white-space: nowrap;      /* 🔒 text never breaks */
 
   background: rgba(255, 255, 255, 0.30);
   backdrop-filter: blur(10px);
@@ -117,15 +135,13 @@ body::before {
 /* Bubble / watery hover */
 .nav-items li a:hover {
   background: rgba(255, 255, 255, 0.55);
-
   transform: scale(1.06);
-
   box-shadow:
     0 8px 18px rgba(255, 255, 255, 0.35),
     0 6px 14px rgba(0, 0, 0, 0.18);
 }
 
-/* Press effect */
+/* Press feel */
 .nav-items li a:active {
   transform: scale(0.98);
 }
@@ -188,13 +204,13 @@ footer {
 
   .nav-items {
     display: none;
-    flex-wrap: wrap;
     justify-content: center;
     margin-top: 10px;
   }
 
   .nav-items.show {
     display: flex;
+    flex-wrap: wrap;     /* mobile can wrap */
   }
 
   .content {
