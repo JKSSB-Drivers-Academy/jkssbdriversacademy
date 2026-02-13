@@ -615,21 +615,5 @@
   </p>
 </footer>
 
-<!-- NAVBAR FETCH -->
-<script>
-fetch("/jkssbdriversacademy/navbar.html")
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById("navbar-placeholder").innerHTML = data;
-
-    const path = window.location.pathname;
-    document.querySelectorAll(".nav-items a").forEach(link => {
-      const linkPath = link.getAttribute("href").replace(".html","");
-      if (path.includes(linkPath)) {
-        link.classList.add("active");
-      }
-    });
-  });
-</script>
 </body>
 </html>
