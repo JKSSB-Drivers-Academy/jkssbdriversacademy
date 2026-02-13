@@ -8,11 +8,12 @@
 }
 
 /* ==============================
-   BACKGROUND – WHITE/GREY FROST
+   BACKGROUND – WHITE / GREY FROST
 ============================== */
 body {
   font-family: Arial, sans-serif;
   min-height: 100vh;
+  color: #111;
 
   background: linear-gradient(
     135deg,
@@ -21,10 +22,9 @@ body {
     #bfbfbf
   );
   background-attachment: fixed;
-  color: #111;
 }
 
-/* Subtle frost overlay */
+/* Subtle frosty overlay */
 body::before {
   content: "";
   position: fixed;
@@ -36,7 +36,7 @@ body::before {
 }
 
 /* ==============================
-   NAVBAR – WHITE FROST GLASS
+   NAVBAR – WHITE FROST (10%)
 ============================== */
 .navbar {
   position: fixed;
@@ -50,22 +50,28 @@ body::before {
 
   padding: 14px 22px;
 
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(22px);
-  -webkit-backdrop-filter: blur(22px);
+  background: rgba(255, 255, 255, 0.10); /* ~10% transparency */
+  backdrop-filter: blur(26px);
+  -webkit-backdrop-filter: blur(26px);
 
   border-bottom: 1px solid rgba(255, 255, 255, 0.45);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.18);
 }
 
-/* Logo */
+/* ==============================
+   LOGO
+============================== */
 .logo {
   font-size: 18px;
   font-weight: bold;
   color: #111;
 }
 
-/* Hamburger (mobile only) */
+/* ==============================
+   HAMBURGER (MOBILE ONLY)
+============================== */
 .menu-btn {
   display: none;
   background: none;
@@ -73,10 +79,11 @@ body::before {
   font-size: 22px;
   cursor: pointer;
   margin-right: 10px;
+  color: #111;
 }
 
 /* ==============================
-   NAV ITEMS (WATERY BUTTONS)
+   NAV ITEMS – WATERY BUTTONS
 ============================== */
 .nav-items {
   list-style: none;
@@ -90,7 +97,7 @@ body::before {
   font-weight: 500;
   color: #111;
 
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.30);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 
@@ -101,22 +108,35 @@ body::before {
     inset 0 1px 0 rgba(255, 255, 255, 0.6),
     0 4px 8px rgba(0, 0, 0, 0.12);
 
-  transition: all 0.25s ease;
+  transition:
+    background 0.3s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Hover */
+/* Bubble / watery hover */
 .nav-items li a:hover {
   background: rgba(255, 255, 255, 0.55);
-  transform: translateY(-2px);
+
+  transform: scale(1.06);
+
+  box-shadow:
+    0 8px 18px rgba(255, 255, 255, 0.35),
+    0 6px 14px rgba(0, 0, 0, 0.18);
 }
 
-/* Active */
+/* Press effect */
+.nav-items li a:active {
+  transform: scale(0.98);
+}
+
+/* Active page */
 .nav-items li a.active {
   background: rgba(255, 255, 255, 0.6);
 }
 
 /* ==============================
-   CONTENT
+   CONTENT AREA
 ============================== */
 .content {
   padding-top: 120px;
@@ -124,7 +144,9 @@ body::before {
   padding-right: 20px;
 }
 
-/* Glass card */
+/* ==============================
+   GLASS CARD – DARK FROST
+============================== */
 .glass-card {
   max-width: 1000px;
   margin: auto;
