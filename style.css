@@ -275,30 +275,31 @@ footer {
   }
    /* ==============================
    COURSE DETAILS TITLE
-============================== */
-/* ==============================
-   COURSE DETAILS TITLE – FINAL OVERRIDE
-============================== */
+/* ===============================
+   FORCE COURSE TITLE STYLE
+================================ */
 
-/* Title */
-.glass-card .course-title {
-  text-align: center;
-  font-size: 28px;
+/* remove inherited white text */
+.glass-card h2.course-title {
+  all: unset;
+  display: block;
+  font-family: Arial, sans-serif;
+  font-size: 30px;
   font-weight: 700;
-  color: #000;
+  color: #000000;
+  text-align: center;
   margin-bottom: 6px;
 }
 
-/* Subtitle */
-.glass-card .subtitle {
+/* remove inherited paragraph styling */
+.glass-card p.subtitle {
+  all: unset;
   display: block;
-  text-align: center;
-  color: #ff0000;
-  font-weight: 600;
+  font-family: Arial, sans-serif;
   font-size: 16px;
+  font-weight: 600;
+  color: #ff0000;
+  text-align: center;
   margin-bottom: 24px;
 }
-
-
-
 }
