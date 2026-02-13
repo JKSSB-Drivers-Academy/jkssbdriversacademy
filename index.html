@@ -85,6 +85,50 @@
     document.getElementById("navItems").classList.toggle("show");
   }
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const profileBtn = document.getElementById("mobileProfileBtn");
+  const sidebar = document.getElementById("mobileSidebar");
+  const overlay = document.getElementById("msOverlay");
+  const accordion = document.querySelector(".ms-accordion");
+
+  if (!profileBtn || !sidebar || !overlay) return;
+
+  function openCloseSidebar() {
+    sidebar.classList.toggle("open");
+    overlay.classList.toggle("show");
+    profileBtn.classList.toggle("active");
+
+    // lock background scroll
+    if (sidebar.classList.contains("open")) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  }
+
+  // Open / close on profile icon
+  profileBtn.addEventListener("click", openCloseSidebar);
+
+  // Close on overlay tap
+  overlay.addEventListener("click", openCloseSidebar);
+
+  // Accordion toggle
+  if (accordion) {
+    accordion.addEventListener("click", function () {
+      const expanded = this.getAttribute("aria-expanded") === "true";
+      this.setAttribute("aria-expanded", String(!expanded));
+    });
+  }
+
+  // Close sidebar when any link is clicked
+  sidebar.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", openCloseSidebar);
+  });
+
+});
+</script>
 
 </body>
 </html>
