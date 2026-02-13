@@ -25,7 +25,6 @@
   margin-bottom:22px;
 }
 
-/* TABLE */
 table.glass-table{
   width:100%;
   border-collapse:collapse;
@@ -34,22 +33,25 @@ table.glass-table{
   border-radius:18px;
   overflow:hidden;
 }
-col.pkg{width:14%;}
-col.desc{width:46%;}
+
+col.pkg{width:13%;}
+col.desc{width:47%;}
 col.price{width:20%;}
 col.buy{width:20%;}
 
 th,td{
   padding:10px;
-  border:1px solid rgba(200,200,200,0.5);
+  border:1px solid rgba(200,200,200,0.55);
   text-align:center;
   font-size:14px;
   vertical-align:top;
 }
+
 th{
   background:rgba(0,102,255,0.9);
   color:#fff;
 }
+
 .buy-btn{
   background:#28a745;
   color:#fff;
@@ -60,6 +62,7 @@ th{
   white-space:nowrap;
   display:inline-block;
 }
+
 .old-price{color:red;text-decoration:line-through;}
 .new-price{color:green;font-weight:bold;}
 .discount{font-size:12px;}
@@ -71,13 +74,12 @@ th{
   font-size:13px;
 }
 
-/* DETAILS */
 .details{
   display:none;
   position:relative;
   margin-top:10px;
   padding:14px;
-  background:rgba(255,255,255,0.88);
+  background:rgba(255,255,255,0.9);
   backdrop-filter:blur(14px);
   border-radius:14px;
   border:1px solid rgba(255,255,255,0.6);
@@ -85,7 +87,9 @@ th{
   font-size:13px;
   text-align:left;
 }
+
 .details.open{display:block;}
+
 .close-toggle{
   position:absolute;
   top:6px;
@@ -93,11 +97,19 @@ th{
   font-size:18px;
   cursor:pointer;
   color:red;
-  animation:pop .4s ease;
+  animation:pop .3s ease;
 }
+
 @keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
 
-/* MODAL */
+.blinking-text{
+  color:red;
+  font-weight:bold;
+  animation:blink 1.2s infinite;
+}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
+
+/* MODAL (MOBILE) */
 .modal{
   display:none;
   position:fixed;
@@ -124,12 +136,11 @@ th{
   z-index:2001;
 }
 
-/* BACK */
 .back-btn{
   display:block;
   width:fit-content;
-  margin:26px auto 0;
-  padding:10px 22px;
+  margin:28px auto 0;
+  padding:10px 24px;
   border-radius:24px;
   background:rgba(255,255,255,0.35);
   backdrop-filter:blur(10px);
@@ -137,15 +148,6 @@ th{
   text-decoration:none;
   font-weight:600;
   color:#111;
-}
-
-/* FOOTER */
-footer{
-  margin-top:60px;
-  padding:18px;
-  text-align:center;
-  font-size:13px;
-  opacity:.85;
 }
 </style>
 </head>
@@ -166,11 +168,18 @@ footer{
 </colgroup>
 
 <tr>
-<th>Package</th><th>Description</th><th>Price</th><th>Buy Now</th>
+<th>Package</th>
+<th>Description</th>
+<th>Price</th>
+<th>Buy Now</th>
 </tr>
 
+<!-- FULL COURSE -->
 <tr>
-<td><b>Full Course – All</b></td>
+<td>
+<b>Full Course – All</b><br>
+<i>(Notes, Video Lectures + 2500+ MCQ Book) + <span class="blinking-text">Free</span> MV Act MCQ Book</i>
+</td>
 <td>
 <span class="toggle-btn" onclick="toggleDetails('full')">Click To View JKSSB FULL Syllabus ▼</span>
 <div id="full" class="details">
@@ -218,13 +227,197 @@ BUY NOW
 </td>
 </tr>
 
+<!-- PART I -->
+<tr>
+<td><b>Part I</b></td>
+<td>
+<span class="toggle-btn" onclick="toggleDetails('p1')">Click To View Detailed Syllabus ▼</span>
+<div id="p1" class="details">
+<span class="close-toggle" onclick="closeDetails('p1')">✕</span>
+
+<b>Traffic Rules and Signalling</b><br>
+1. Traffic Police hand signals<br>
+2. Basic Road Rules, driving methods and speed limits, Understanding Signals<br>
+3. Hand signals while driving<br>
+4. Traffic light signals<br>
+5. Road map reading<br>
+6. Knowledge of traffic signages for road safety<br>
+7. Fitness to drive<br>
+8. First aid kit<br>
+9. Good health & Road safety<br>
+10. Driving under influence of drugs/liquors<br>
+11. Difficult driving conditions<br>
+12. Driving on wet surface<br>
+13. Driving in fog<br>
+14. Night driving<br>
+15. Running on pavement<br>
+16. Brake failure<br>
+17. Towing<br>
+18. Essential knowledge about vehicle pollution (Do's and Don'ts)
+</div>
+</td>
+<td>
+<span class="old-price">₹899</span><br>
+<span class="new-price">₹449</span><br>
+<span class="discount">(50% OFF)</span>
+</td>
+<td>
+<a class="buy-btn" target="_blank"
+href="https://payments.cashfree.com/forms?code=jkssbcourse&formId=PART1">
+BUY NOW
+</a>
+</td>
+</tr>
+
+<!-- PART II -->
+<tr>
+<td><b>Part II</b></td>
+<td>
+<span class="toggle-btn" onclick="toggleDetails('p2')">Click To View Detailed Syllabus ▼</span>
+<div id="p2" class="details">
+<span class="close-toggle" onclick="closeDetails('p2')">✕</span>
+
+<b>MV Act,1988 & CMV Rules,1989</b><br>
+1. Basic knowledge about provisions of the Motor Vehicle Act<br>
+2. Awareness about documents required for driving and offence related<br>
+3. Registration<br>
+4. Licensing<br>
+5. Insurance
+</div>
+</td>
+<td>
+<span class="old-price">₹499</span><br>
+<span class="new-price">₹299</span><br>
+<span class="discount">(40% OFF)</span>
+</td>
+<td>
+<a class="buy-btn" target="_blank"
+href="https://payments.cashfree.com/forms?code=jkssbcoursePART2&formId=PART2">
+BUY NOW
+</a>
+</td>
+</tr>
+<!-- PART III -->
+<tr>
+<td><b>Part III</b></td>
+<td>
+<span class="toggle-btn" onclick="toggleDetails('p3')">Click To View Detailed Syllabus ▼</span>
+<div id="p3" class="details">
+<span class="close-toggle" onclick="closeDetails('p3')">✕</span>
+
+<b>Motor Parts and Its Repair</b><br>
+1. Identification of major assemblies of vehicle<br>
+2. Knowledge of daily and periodic inspection<br>
+3. Knowledge of fault diagnosis in tyre and its changing procedure<br>
+4. Knowledge of fuel pump, clutch and brake working and their air bleeding procedure<br>
+5. Lubrication grades used in vehicle for engine, transmission, differential, suspension<br>
+6. Knowledge about servicing schedule and service centres location<br>
+7. Knowledge of different starting methods<br>
+8. Knowledge of dashboard symbols
+</div>
+</td>
+<td>
+<span class="old-price">₹899</span><br>
+<span class="new-price">₹449</span><br>
+<span class="discount">(50% OFF)</span>
+</td>
+<td>
+<a class="buy-btn" target="_blank"
+href="https://payments.cashfree.com/forms?code=jkssbcoursepart3&formId=PART3">
+BUY NOW
+</a>
+</td>
+</tr>
+
+<!-- MV ACT BOOK -->
+<tr>
+<td><b>MV Act, 1988 MCQ Book</b></td>
+<td>
+<span class="toggle-btn" onclick="toggleDetails('mv')">Click To View Details ▼</span>
+<div id="mv" class="details">
+<span class="close-toggle" onclick="closeDetails('mv')">✕</span>
+
+<img src="https://drive.google.com/uc?export=view&id=1mqYoaZnF1f25PN8x5fq_gLPKVKa0xQrx"
+style="max-width:100%;border-radius:10px;"><br><br>
+
+<b>MV Act,1988 & CMV Rules,1989</b><br>
+Complete Motor Vehicle Act MCQ Book with more than 300 updated MCQs.
+Amendments included. Highly important for JKSSB Driver exam.
+</div>
+</td>
+<td>
+<span class="old-price">₹299</span><br>
+<span class="new-price">₹199</span><br>
+<span class="discount">(33% OFF)</span>
+</td>
+<td>
+<a class="buy-btn" target="_blank"
+href="https://payments.cashfree.com/forms?code=jkssbcoursemvact&formId=MVACT">
+BUY NOW
+</a>
+</td>
+</tr>
+
+<!-- MCQ BOOK -->
+<tr>
+<td>
+<span class="blinking-text">New</span><br>
+<b>MCQ Book – Fully Syllabus Covered</b><br>
+<i>2500+ MCQs with answers</i>
+</td>
+<td>
+This is one of the most expected JKSSB MCQ books prepared strictly
+according to the JKSSB syllabus with full coverage.
+</td>
+<td>
+<span class="old-price">₹499</span><br>
+<span class="new-price">₹299</span><br>
+<span class="discount">(40% OFF)</span>
+</td>
+<td>
+<a class="buy-btn" target="_blank"
+href="https://payments.cashfree.com/forms?code=MCQBOOK">
+BUY NOW
+</a>
+</td>
+</tr>
+
+<!-- OLD PAPERS -->
+<tr>
+<td>
+<span class="blinking-text">New</span><br>
+<b>Old Driver Papers</b>
+</td>
+<td>
+JKSSB and other boards previous Drivers question papers.
+</td>
+<td>
+<span class="old-price">₹49</span><br>
+<span class="new-price">₹19</span><br>
+<span class="discount">(60% OFF)</span>
+</td>
+<td>
+<a class="buy-btn" target="_blank"
+href="https://payments.cashfree.com/forms?code=OldDriverPapers">
+BUY NOW
+</a>
+</td>
+</tr>
+
 </table>
 
-<a href="index.html" class="back-btn">← Back</a>
+<!-- MOBILE MODAL -->
+<div id="modal" class="modal">
+<span class="modal-close" onclick="closeModal()">×</span>
+<div class="modal-content" id="modal-body"></div>
+</div>
+
+<a href="javascript:history.back()" class="back-btn">← Back</a>
 
 </section>
 </main>
 
+<!-- FOOTER -->
 <footer>
 <p>© JKSSB Drivers Academy. All rights reserved.</p>
 <p>
@@ -235,15 +428,11 @@ BUY NOW
 </p>
 </footer>
 
-<div id="modal" class="modal">
-<span class="modal-close" onclick="closeModal()">×</span>
-<div class="modal-content"><div id="modal-body"></div></div>
-</div>
-
 <script>
 function toggleDetails(id){
   if(window.innerWidth<=768){
-    document.getElementById('modal-body').innerHTML=document.getElementById(id).innerHTML;
+    document.getElementById('modal-body').innerHTML =
+      document.getElementById(id).innerHTML;
     document.getElementById('modal').style.display='block';
   }else{
     document.getElementById(id).classList.add('open');
@@ -255,10 +444,8 @@ function closeDetails(id){
 function closeModal(){
   document.getElementById('modal').style.display='none';
 }
-</script>
 
-<script>
-fetch("/jkssbdriversacademy/navbar.html")
+fetch("navbar.html")
 .then(r=>r.text())
 .then(d=>document.getElementById("navbar-placeholder").innerHTML=d);
 </script>
