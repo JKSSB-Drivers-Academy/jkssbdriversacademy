@@ -4,13 +4,18 @@
   <meta charset="UTF-8">
   <title>Part III – Automobile & Mechanical | JKSSB Drivers Academy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/jkssbdriversacademy/style.css">
+
+  <!-- ✅ GLOBAL CSS SYSTEM (CORRECT) -->
+  <link rel="stylesheet" href="/jkssbdriversacademy/base.css">
+  <link rel="stylesheet" href="/jkssbdriversacademy/desktop.css" media="(min-width:769px)">
+  <link rel="stylesheet" href="/jkssbdriversacademy/mobile.css" media="(max-width:768px)">
 </head>
 <body>
 
-<!-- REQUIRED: NAVBAR PLACEHOLDER -->
+<!-- NAVBAR -->
 <div id="navbar-placeholder"></div>
 
+<!-- PAGE CONTENT -->
 <main class="content">
   <section class="glass-card">
 
@@ -19,32 +24,46 @@
     <p>This part includes:</p>
 
     <ul>
-      <li>Basic automobile engineering</li>
-      <li>Engine, transmission, and brakes</li>
-      <li>Vehicle maintenance and troubleshooting</li>
+      <li>Identification of major assemblies of vehicles</li>
+      <li>Engine, transmission, clutch and brake systems</li>
+      <li>Daily and periodic vehicle inspection</li>
+      <li>Tyre fault diagnosis and tyre changing procedure</li>
+      <li>Lubrication grades and servicing schedule</li>
+      <li>Dashboard symbols and starting methods</li>
     </ul>
 
     <p>
-      Focus is on practical knowledge required for driver exams.
+      The focus is on practical and technical knowledge
+      required for competitive driver recruitment examinations.
     </p>
 
-    <a href="/jkssbdriversacademy/my-courses.html">
-      Back to My Courses
+    <a href="/jkssbdriversacademy/my-courses.html" class="back-btn">
+      ← Back to My Courses
     </a>
 
   </section>
 </main>
 
-<!-- REQUIRED SCRIPT -->
+<!-- FOOTER -->
+<footer>
+  <p>© JKSSB Drivers Academy. All rights reserved.</p>
+  <p>
+    <a href="privacy-policy.html">Privacy Policy</a> |
+    <a href="terms-and-conditions.html">Terms & Conditions</a> |
+    <a href="refund-policy.html">Refund Policy</a> |
+    <a href="copyright-warning.html">Copyright Warning</a>
+  </p>
+</footer>
+
+<!-- NAVBAR LOAD SCRIPT -->
 <script>
 fetch("/jkssbdriversacademy/navbar.html")
-  .then(response => response.text())
-  .then(data => {
-    document.getElementById("navbar-placeholder").innerHTML = data;
+  .then(res => res.text())
+  .then(html => {
+    document.getElementById("navbar-placeholder").innerHTML = html;
 
-    // Highlight active page
+    // Highlight active desktop link
     const currentPage = location.pathname.split("/").pop() || "index.html";
-
     document.querySelectorAll(".nav-items a").forEach(link => {
       if (link.getAttribute("href") === currentPage) {
         link.classList.add("active");
@@ -52,13 +71,6 @@ fetch("/jkssbdriversacademy/navbar.html")
     });
   })
   .catch(err => console.error("Navbar load failed:", err));
-
-function toggleMobileMenu() {
-  const nav = document.getElementById("navItems");
-  if (nav) {
-    nav.classList.toggle("show");
-  }
-}
 </script>
 
 </body>
