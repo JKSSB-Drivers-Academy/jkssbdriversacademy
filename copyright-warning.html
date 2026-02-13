@@ -5,17 +5,18 @@
   <title>Copyright Warning | JKSSB Drivers Academy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- NEW CSS STRUCTURE -->
+  <!-- GLOBAL CSS SYSTEM -->
   <link rel="stylesheet" href="base.css">
-  <link rel="stylesheet" href="desktop.css" media="(min-width: 769px)">
-  <link rel="stylesheet" href="mobile.css" media="(max-width: 768px)">
+  <link rel="stylesheet" href="desktop.css" media="(min-width:769px)">
+  <link rel="stylesheet" href="mobile.css" media="(max-width:768px)">
 </head>
+
 <body>
 
-<!-- ================= NAVBAR PLACEHOLDER ================= -->
+<!-- NAVBAR -->
 <div id="navbar-placeholder"></div>
 
-<!-- ================= PAGE CONTENT ================= -->
+<!-- PAGE CONTENT -->
 <main class="content">
   <section class="glass-card">
 
@@ -29,30 +30,26 @@
       No part of this website, including text, graphics, images, PDFs, videos,
       or any other material, may be reproduced, distributed, transmitted,
       republished, stored, or reused in any form or by any means—electronic,
-      mechanical, photocopying, recording, or otherwise—without the prior
-      written permission of the copyright owner.
+      mechanical, photocopying, recording, or otherwise—without prior written permission.
     </p>
 
     <p>
-      This restriction does not apply to brief quotations used in critical
-      reviews or to non-commercial uses permitted under applicable copyright laws.
+      This restriction does not apply to brief quotations used in critical reviews
+      or non-commercial uses permitted under applicable copyright laws.
     </p>
 
     <p>
-      Any unauthorized copying, reproduction, resale, sharing, or distribution
-      of copyrighted material from this website will result in the immediate
-      issuance of a legal notice and may lead to further civil or criminal
-      proceedings under applicable laws.
+      Unauthorized copying, reproduction, resale, sharing, or distribution
+      may result in legal notice and civil or criminal proceedings.
     </p>
 
     <p>
-      If any copyrighted material appears on this website without proper
-      authorization, the rightful owner is requested to contact us directly.
-      Upon receiving a valid notice, the content will be reviewed and removed
-      promptly if infringement is confirmed.
+      If copyrighted material appears without authorization,
+      the rightful owner may contact us directly.
     </p>
 
     <h3>Permission & Removal Requests</h3>
+
     <p>
       <strong>JKSSB Drivers Academy Team</strong><br>
       Email: <strong>info@jkssbdriversacademy.co.in</strong>
@@ -61,75 +58,11 @@
   </section>
 </main>
 
-<!-- ================= FOOTER ================= -->
-<footer>
-  <p>© JKSSB Drivers Academy. All rights reserved.</p>
-  <p>
-    <a href="privacy-policy.html">Privacy Policy</a> |
-    <a href="terms-and-conditions.html">Terms & Conditions</a> |
-    <a href="refund-policy.html">Refund Policy</a>
-  </p>
-</footer>
+<!-- FOOTER -->
+<div id="footer-placeholder"></div>
 
-<!-- ================= NAVBAR LOAD + MOBILE SIDEBAR JS ================= -->
-<script>
-fetch("/jkssbdriversacademy/navbar.html")
-  .then(res => {
-    if (!res.ok) throw new Error("Navbar load failed");
-    return res.text();
-  })
-  .then(html => {
-
-    // Inject navbar
-    document.getElementById("navbar-placeholder").innerHTML = html;
-
-    // ===== Highlight Active Page (Desktop) =====
-    const currentPage = location.pathname.split("/").pop() || "index.html";
-
-    document.querySelectorAll(".nav-items a").forEach(link => {
-      if (link.getAttribute("href") === currentPage) {
-        link.classList.add("active");
-      }
-    });
-
-    // ===== MOBILE SIDEBAR LOGIC =====
-    const logoTrigger = document.querySelector(".logo-wrap");
-    const sidebar = document.getElementById("mobileSidebar");
-    const overlay = document.getElementById("msOverlay");
-    const accordion = document.querySelector(".ms-accordion");
-
-    if (!logoTrigger || !sidebar || !overlay) return;
-
-    function toggleSidebar() {
-      sidebar.classList.toggle("open");
-      overlay.classList.toggle("show");
-
-      document.body.style.overflow =
-        sidebar.classList.contains("open") ? "hidden" : "";
-    }
-
-    // Open / close via logo
-    logoTrigger.addEventListener("click", toggleSidebar);
-
-    // Close on overlay tap
-    overlay.addEventListener("click", toggleSidebar);
-
-    // Accordion (My Courses)
-    if (accordion) {
-      accordion.addEventListener("click", () => {
-        const expanded = accordion.getAttribute("aria-expanded") === "true";
-        accordion.setAttribute("aria-expanded", String(!expanded));
-      });
-    }
-
-    // Close sidebar when any link clicked
-    sidebar.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", toggleSidebar);
-    });
-
-  })
-  .catch(err => console.error(err));
-</script>
+<!-- MASTER SCRIPT -->
+<script src="/jkssbdriversacademy/app.js"></script>
 
 </body>
 </html>
