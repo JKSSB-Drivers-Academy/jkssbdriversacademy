@@ -22,5 +22,20 @@
   </p>
 
   <a href="my-courses.html">Back to My Courses</a>
+  <script>
+fetch("navbar.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("navbar-placeholder").innerHTML = data;
+
+    const currentPage = location.pathname.split("/").pop() || "index.html";
+    document.querySelectorAll(".nav-items a").forEach(link => {
+      if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
