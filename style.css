@@ -8,7 +8,7 @@
 }
 
 /* ==============================
-   BACKGROUND – WHITE / GREY FROST
+   BACKGROUND – GREY / WHITE FROST
 ============================== */
 body {
   font-family: Arial, sans-serif;
@@ -36,7 +36,7 @@ body::before {
 }
 
 /* ==============================
-   NAVBAR – WHITE FROST (10%)
+   NAVBAR – WHITE FROST (BROADER)
 ============================== */
 .navbar {
   position: fixed;
@@ -45,30 +45,16 @@ body::before {
   z-index: 1000;
 
   display: flex;
-  justify-content: space-between;
   align-items: center;
 
-  padding: 14px 22px;
+  padding: 20px 26px;          /* broader height */
 
   background: rgba(255, 255, 255, 0.10);
-  backdrop-filter: blur(26px);
-  -webkit-backdrop-filter: blur(26px);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
 
   border-bottom: 1px solid rgba(255, 255, 255, 0.45);
-
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
-
-  overflow-x: auto;               /* allow horizontal scroll if needed */
-  white-space: nowrap;
-}
-
-/* Hide scrollbar visually (still scrollable) */
-.navbar::-webkit-scrollbar {
-  height: 6px;
-}
-.navbar::-webkit-scrollbar-thumb {
-  background: rgba(0,0,0,0.15);
-  border-radius: 10px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
 }
 
 /* ==============================
@@ -78,7 +64,7 @@ body::before {
   font-size: 18px;
   font-weight: bold;
   color: #111;
-  margin-right: 18px;
+  margin-right: 26px;
   white-space: nowrap;
 }
 
@@ -91,40 +77,42 @@ body::before {
   border: none;
   font-size: 22px;
   cursor: pointer;
-  margin-right: 10px;
+  margin-right: 12px;
   color: #111;
 }
 
 /* ==============================
-   NAV ITEMS – ONE LINE, WATERY
+   NAV ITEMS – MAIN LINE
 ============================== */
 .nav-items {
   list-style: none;
   display: flex;
-  gap: 10px;
+  gap: 12px;
+  align-items: center;
 
-  flex-wrap: nowrap;        /* 🔒 no wrapping */
-  white-space: nowrap;      /* 🔒 single line */
+  flex-wrap: nowrap;
+  white-space: nowrap;
 }
 
+/* ==============================
+   NAV BUTTONS – WATERY GLASS
+============================== */
 .nav-items li a {
-  padding: 10px 18px;
+  padding: 12px 20px;
   text-decoration: none;
   font-weight: 500;
   color: #111;
-
-  white-space: nowrap;      /* 🔒 text never breaks */
 
   background: rgba(255, 255, 255, 0.30);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 
-  border-radius: 22px;
+  border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.6);
 
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.6),
-    0 4px 8px rgba(0, 0, 0, 0.12);
+    0 4px 10px rgba(0, 0, 0, 0.12);
 
   transition:
     background 0.3s ease,
@@ -132,7 +120,7 @@ body::before {
     box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Bubble / watery hover */
+/* Bubble hover */
 .nav-items li a:hover {
   background: rgba(255, 255, 255, 0.55);
   transform: scale(1.06);
@@ -152,10 +140,47 @@ body::before {
 }
 
 /* ==============================
+   MORE ▾ DROPDOWN (DESKTOP)
+============================== */
+.more-menu {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  top: 115%;
+  right: 0;
+
+  list-style: none;
+  padding: 10px;
+  display: none;
+
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.dropdown li a {
+  display: block;
+  margin: 6px 0;
+  padding: 10px 18px;
+}
+
+/* Show dropdown on hover */
+.more-menu:hover .dropdown {
+  display: block;
+}
+
+/* ==============================
    CONTENT AREA
 ============================== */
 .content {
-  padding-top: 120px;
+  padding-top: 140px;  /* space for taller navbar */
   padding-left: 20px;
   padding-right: 20px;
 }
@@ -204,16 +229,27 @@ footer {
 
   .nav-items {
     display: none;
+    flex-wrap: wrap;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 14px;
   }
 
   .nav-items.show {
     display: flex;
-    flex-wrap: wrap;     /* mobile can wrap */
   }
 
   .content {
-    padding-top: 160px;
+    padding-top: 180px;
+  }
+
+  /* Disable hover dropdown on mobile */
+  .dropdown {
+    position: static;
+    display: block;
+    background: none;
+    backdrop-filter: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
   }
 }
