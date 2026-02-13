@@ -1,28 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Part III – Automobile & Mechanical | JKSSB Drivers Academy</title>
-   <link rel="stylesheet" href="/jkssbdriversacademy/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/jkssbdriversacademy/style.css">
 </head>
 <body>
-  <h1>Part III – Automobile & Mechanical</h1>
 
-  <p>
-    This part includes:
-  </p>
+<!-- REQUIRED: NAVBAR PLACEHOLDER -->
+<div id="navbar-placeholder"></div>
 
-  <ul>
-    <li>Basic automobile engineering</li>
-    <li>Engine, transmission, and brakes</li>
-    <li>Vehicle maintenance and troubleshooting</li>
-  </ul>
+<main class="content">
+  <section class="glass-card">
 
-  <p>
-    Focus is on practical knowledge required for driver exams.
-  </p>
+    <h1>Part III – Automobile & Mechanical</h1>
 
-  <a href="my-courses.html">Back to My Courses</a>
-  <script>
+    <p>This part includes:</p>
+
+    <ul>
+      <li>Basic automobile engineering</li>
+      <li>Engine, transmission, and brakes</li>
+      <li>Vehicle maintenance and troubleshooting</li>
+    </ul>
+
+    <p>
+      Focus is on practical knowledge required for driver exams.
+    </p>
+
+    <a href="/jkssbdriversacademy/my-courses.html">
+      Back to My Courses
+    </a>
+
+  </section>
+</main>
+
+<!-- REQUIRED SCRIPT -->
+<script>
 fetch("/jkssbdriversacademy/navbar.html")
   .then(res => res.text())
   .then(data => {
