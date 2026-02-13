@@ -1,0 +1,119 @@
+/* ==============================
+   RESET
+============================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ==============================
+   ROOT VARIABLES (OPTIONAL, FUTURE SAFE)
+============================== */
+:root {
+  --glass-white: rgba(255, 255, 255, 0.35);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --text-dark: #111;
+}
+
+/* ==============================
+   BODY & BACKGROUND
+============================== */
+body {
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  color: var(--text-dark);
+
+  background: linear-gradient(
+    135deg,
+    #f4f4f4,
+    #dcdcdc,
+    #bdbdbd
+  );
+  background-attachment: fixed;
+}
+
+/* Subtle frosted overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  z-index: -1;
+}
+
+/* ==============================
+   MAIN CONTENT OFFSET
+============================== */
+.content {
+  padding-top: 160px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* ==============================
+   GLASS CARD (SHARED)
+============================== */
+.glass-card {
+  max-width: 1000px;
+  margin: auto;
+  padding: 40px;
+
+  border-radius: 26px;
+
+  background: rgba(0, 0, 0, 0.35);
+  color: #f5f5f5;
+
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* ==============================
+   TEXT ELEMENTS
+============================== */
+.glass-card h1 {
+  font-size: 32px;
+  margin-bottom: 14px;
+}
+
+.glass-card p {
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+
+.glass-card ul {
+  margin: 18px 0;
+  padding-left: 20px;
+}
+
+.glass-card li {
+  margin-bottom: 8px;
+}
+
+/* ==============================
+   FOOTER
+============================== */
+footer {
+  margin-top: 60px;
+  padding: 20px;
+  text-align: center;
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+footer a {
+  color: #2b2bff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
