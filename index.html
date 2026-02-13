@@ -4,8 +4,13 @@
   <meta charset="UTF-8">
   <title>Home | JKSSB Drivers Academy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+
+  <!-- GLOBAL CSS SYSTEM -->
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="desktop.css" media="(min-width:769px)">
+  <link rel="stylesheet" href="mobile.css" media="(max-width:768px)">
 </head>
+
 <body>
 
 <!-- ================= NAVBAR PLACEHOLDER ================= -->
@@ -54,62 +59,48 @@
 
 <!-- ================= NAVBAR LOAD + MOBILE SIDEBAR JS ================= -->
 <script>
-/*
-  IMPORTANT:
-  Repo name = jkssbdriversacademy
-  So fetch path MUST include it
-*/
-fetch("/jkssbdriversacademy/navbar.html")
-  .then(res => {
-    if (!res.ok) throw new Error("Navbar fetch failed");
-    return res.text();
-  })
-  .then(html => {
-    // Inject navbar
-    document.getElementById("navbar-placeholder").innerHTML = html;
+document.addEventListener("DOMContentLoaded", function () {
 
-    // ===== MOBILE DRAWER LOGIC (AFTER NAVBAR LOADS) =====
-    const profileBtn = document.getElementById("mobileProfileBtn");
-    const sidebar   = document.getElementById("mobileSidebar");
-    const overlay   = document.getElementById("msOverlay");
-    const accordion = document.querySelector(".ms-accordion");
+  fetch("/jkssbdriversacademy/navbar.html")
+    .then(res => {
+      if (!res.ok) throw new Error("Navbar fetch failed");
+      return res.text();
+    })
+    .then(html => {
+      document.getElementById("navbar-placeholder").innerHTML = html;
 
-    // Safety check
-    if (!profileBtn || !sidebar || !overlay) {
-      console.warn("Mobile sidebar elements not found");
-      return;
-    }
+      const profileBtn = document.getElementById("mobileProfileBtn");
+      const sidebar   = document.getElementById("mobileSidebar");
+      const overlay   = document.getElementById("msOverlay");
+      const accordion = document.querySelector(".ms-accordion");
 
-    function toggleSidebar() {
-      sidebar.classList.toggle("open");
-      overlay.classList.toggle("show");
-      profileBtn.classList.toggle("active");
+      if (!profileBtn || !sidebar || !overlay) return;
 
-      document.body.style.overflow =
-        sidebar.classList.contains("open") ? "hidden" : "";
-    }
+      function toggleSidebar() {
+        sidebar.classList.toggle("open");
+        overlay.classList.toggle("show");
+        profileBtn.classList.toggle("active");
+        document.body.style.overflow =
+          sidebar.classList.contains("open") ? "hidden" : "";
+      }
 
-    // Open / close drawer
-    profileBtn.addEventListener("click", toggleSidebar);
-    overlay.addEventListener("click", toggleSidebar);
+      profileBtn.addEventListener("click", toggleSidebar);
+      overlay.addEventListener("click", toggleSidebar);
 
-    // Accordion (My Courses)
-    if (accordion) {
-      accordion.addEventListener("click", () => {
-        const expanded = accordion.getAttribute("aria-expanded") === "true";
-        accordion.setAttribute("aria-expanded", String(!expanded));
+      if (accordion) {
+        accordion.addEventListener("click", () => {
+          const expanded = accordion.getAttribute("aria-expanded") === "true";
+          accordion.setAttribute("aria-expanded", String(!expanded));
+        });
+      }
+
+      sidebar.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", toggleSidebar);
       });
-    }
+    })
+    .catch(err => console.error(err));
 
-    // Close drawer on link click
-    sidebar.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", toggleSidebar);
-    });
-
-  })
-  .catch(err => {
-    console.error(err);
-  });
+});
 </script>
 
 </body>
