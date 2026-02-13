@@ -417,67 +417,44 @@ BUY NOW
 </section>
 </main>
 
-<!-- FOOTER -->
-<footer>
-<p>© JKSSB Drivers Academy. All rights reserved.</p>
-<p>
-<a href="privacy-policy.html">Privacy Policy</a> |
-<a href="terms-and-conditions.html">Terms & Conditions</a> |
-<a href="refund-policy.html">Refund Policy</a> |
-<a href="copyright-warning.html">Copyright Warning</a>
-</p>
-</footer>
+<!-- FOOTER PLACEHOLDER -->
+<div id="footer-placeholder"></div>
 
 <script>
 function toggleDetails(id) {
 
-  // MOBILE → use modal only
+  // MOBILE → open modal
   if (window.innerWidth <= 768) {
-    document.getElementById("modal-body").innerHTML =
-      document.getElementById(id).innerHTML;
-    document.getElementById("modal").style.display = "block";
+    const modal = document.getElementById("modal");
+    const body  = document.getElementById("modal-body");
+
+    if (modal && body) {
+      body.innerHTML = document.getElementById(id).innerHTML;
+      modal.style.display = "block";
+    }
     return;
   }
 
-  // DESKTOP → accordion behavior
-
+  // DESKTOP → close others first
   const allDetails = document.querySelectorAll(".details");
   const target = document.getElementById(id);
   const isOpen = target.classList.contains("open");
 
-  // Close ALL first
   allDetails.forEach(d => d.classList.remove("open"));
 
-  // If it was not open earlier → open it
   if (!isOpen) {
     target.classList.add("open");
   }
 }
 
-function closeDetails(id) {
-  document.getElementById(id).classList.remove("open");
-}
-
 function closeModal() {
-  document.getElementById("modal").style.display = "none";
+  const modal = document.getElementById("modal");
+  if (modal) modal.style.display = "none";
 }
 </script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  fetch("/jkssbdriversacademy/navbar.html")
-    .then(response => {
-      if (!response.ok) {
-        throw new Error("Navbar fetch failed");
-      }
-      return response.text();
-    })
-    .then(html => {
-      document.getElementById("navbar-placeholder").innerHTML = html;
-    })
-    .catch(err => {
-      console.error("Navbar load error:", err);
-    });
-});
-</script>
+
+<!-- MASTER APP JS -->
+<script src="/jkssbdriversacademy/app.js"></script>
+
 </body>
 </html>
