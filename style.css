@@ -277,16 +277,7 @@ footer {
    COURSE DETAILS TITLE – FINAL
 ============================== */
 
-.glass-card h2.course-title {
-  all: unset;
-  display: block;
-  font-family: Arial, sans-serif;
-  font-size: 30px;
-  font-weight: 700;
-  color: #000;
-  text-align: center;
-  margin-bottom: 6px;
-}
+
 
 .glass-card p.subtitle {
   all: unset;
