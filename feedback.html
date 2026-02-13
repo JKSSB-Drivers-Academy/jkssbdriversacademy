@@ -4,10 +4,16 @@
   <meta charset="UTF-8">
   <title>Feedback | JKSSB Drivers Academy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+
+  <!-- GLOBAL CSS SYSTEM -->
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="desktop.css" media="(min-width:769px)">
+  <link rel="stylesheet" href="mobile.css" media="(max-width:768px)">
 </head>
+
 <body>
 
+<!-- NAVBAR PLACEHOLDER -->
 <div id="navbar-placeholder"></div>
 
 <!-- ================= PAGE CONTENT ================= -->
@@ -43,23 +49,35 @@
     <a href="copyright-warning.html">Copyright Warning</a>
   </p>
 </footer>
-  <script>
-fetch("/jkssbdriversacademy/navbar.html")
-  .then(response => response.text())
-  .then(data => {
-    document.getElementById("navbar-placeholder").innerHTML = data;
 
-    // Highlight active page
-    const currentPage = location.pathname.split("/").pop() || "index.html";
+<!-- ================= NAVBAR SCRIPT ================= -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
 
-    document.querySelectorAll(".nav-items a").forEach(link => {
-      if (link.getAttribute("href") === currentPage) {
-        link.classList.add("active");
+  fetch("/jkssbdriversacademy/navbar.html")
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Navbar fetch failed");
       }
-    });
-  })
-  .catch(err => console.error("Navbar load failed:", err));
+      return response.text();
+    })
+    .then(data => {
+      document.getElementById("navbar-placeholder").innerHTML = data;
 
+      // Highlight active page
+      const currentPage = location.pathname.split("/").pop() || "index.html";
+
+      document.querySelectorAll(".nav-items a").forEach(link => {
+        if (link.getAttribute("href") === currentPage) {
+          link.classList.add("active");
+        }
+      });
+    })
+    .catch(err => console.error("Navbar load failed:", err));
+
+});
+
+// Mobile hamburger toggle
 function toggleMobileMenu() {
   const nav = document.getElementById("navItems");
   if (nav) {
@@ -67,7 +85,6 @@ function toggleMobileMenu() {
   }
 }
 </script>
-
 
 </body>
 </html>
