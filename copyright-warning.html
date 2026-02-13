@@ -8,35 +8,7 @@
 </head>
 <body>
 
-<!-- ================= NAVBAR ================= -->
-<nav class="navbar">
-
-  <!-- LOGO -->
-  <a href="index.html" class="logo-wrap">
-    <img src="logo.png" alt="JKSSB Drivers Academy Logo" class="logo-img">
-    <span class="logo-text">JKSSB Drivers Academy</span>
-  </a>
-
-  <!-- NAV ITEMS -->
-  <ul class="nav-items">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="course-details.html">Course Details</a></li>
-    <li><a href="my-courses.html">My Courses</a></li>
-    <li><a href="mock-tests.html">Mock / MCQ Tests</a></li>
-    <li><a href="demo-pdfs.html">Demo PDFs</a></li>
-    <li class="more-menu">
-      <a href="#">More ▾</a>
-      <ul class="dropdown">
-         <li><a href="gk-pdfs.html">GK PDFs</a></li>
-        <li><a href="jkssb-updates.html">JKSSB Updates</a></li>
-        <li><a href="feedback.html">Feedback</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-      </ul>
-    </li>
-  </ul>
-
-</nav>
-
+<div id="navbar-placeholder"></div>
 <!-- ================= PAGE CONTENT ================= -->
 <main class="content">
   <section class="glass-card">
@@ -93,18 +65,28 @@
   </p>
 </footer>
 <script>
-fetch("navbar.html")
-  .then(res => res.text())
+fetch("/jkssbdriversacademy/navbar.html")
+  .then(response => response.text())
   .then(data => {
     document.getElementById("navbar-placeholder").innerHTML = data;
 
+    // Highlight active page
     const currentPage = location.pathname.split("/").pop() || "index.html";
+
     document.querySelectorAll(".nav-items a").forEach(link => {
       if (link.getAttribute("href") === currentPage) {
         link.classList.add("active");
       }
     });
-  });
+  })
+  .catch(err => console.error("Navbar load failed:", err));
+
+function toggleMobileMenu() {
+  const nav = document.getElementById("navItems");
+  if (nav) {
+    nav.classList.toggle("show");
+  }
+}
 </script>
 
 </body>
