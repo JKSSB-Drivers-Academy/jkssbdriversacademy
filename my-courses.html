@@ -5,15 +5,16 @@
   <title>My Courses | JKSSB Drivers Academy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- ✅ CORRECT CSS PATH -->
-  <link rel="stylesheet" href="/jkssbdriversacademy/style.css">
+  <!-- ✅ GLOBAL CSS SYSTEM (CORRECT PATHS) -->
+  <link rel="stylesheet" href="/jkssbdriversacademy/base.css">
+  <link rel="stylesheet" href="/jkssbdriversacademy/desktop.css" media="(min-width:769px)">
+  <link rel="stylesheet" href="/jkssbdriversacademy/mobile.css" media="(max-width:768px)">
 </head>
+
 <body>
 
-<!-- NAVBAR -->
 <div id="navbar-placeholder"></div>
 
-<!-- PAGE CONTENT -->
 <main class="content">
   <section class="glass-card">
 
@@ -30,7 +31,6 @@
   </section>
 </main>
 
-<!-- FOOTER -->
 <footer>
   <p>© JKSSB Drivers Academy. All rights reserved.</p>
   <p>
@@ -41,14 +41,13 @@
   </p>
 </footer>
 
-<!-- NAVBAR LOAD -->
 <script>
 fetch("/jkssbdriversacademy/navbar.html")
   .then(res => res.text())
   .then(html => {
     document.getElementById("navbar-placeholder").innerHTML = html;
 
-    // Highlight active desktop link
+    // highlight active link
     const currentPage = location.pathname.split("/").pop() || "index.html";
     document.querySelectorAll(".nav-items a").forEach(link => {
       if (link.getAttribute("href") === currentPage) {
