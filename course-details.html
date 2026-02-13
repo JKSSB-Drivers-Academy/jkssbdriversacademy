@@ -462,6 +462,22 @@ function closeModal() {
   document.getElementById("modal").style.display = "none";
 }
 </script>
-
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  fetch("/jkssbdriversacademy/navbar.html")
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Navbar fetch failed");
+      }
+      return response.text();
+    })
+    .then(html => {
+      document.getElementById("navbar-placeholder").innerHTML = html;
+    })
+    .catch(err => {
+      console.error("Navbar load error:", err);
+    });
+});
+</script>
 </body>
 </html>
