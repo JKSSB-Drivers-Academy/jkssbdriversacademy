@@ -1,6 +1,7 @@
+<!-- ================= DESKTOP NAVBAR (UNCHANGED) ================= -->
 <nav class="navbar">
 
-  <!-- HAMBURGER (MOBILE ONLY) -->
+  <!-- EXISTING HAMBURGER (DESKTOP LOGIC UNTOUCHED, MOBILE HIDING VIA CSS) -->
   <button class="menu-btn" onclick="toggleMobileMenu()">☰</button>
 
   <!-- LOGO -->
@@ -30,3 +31,62 @@
   </ul>
 
 </nav>
+<!-- ============================================================= -->
+
+
+<!-- =============== MOBILE PROFILE TRIGGER (NEW) ================= -->
+<button id="mobileProfileBtn" aria-label="Open menu">
+  <img src="logo.png" alt="Profile">
+</button>
+<!-- ============================================================= -->
+
+
+<!-- ================= MOBILE SIDEBAR DRAWER ===================== -->
+<aside id="mobileSidebar" aria-hidden="true">
+
+  <!-- PROFILE HEADER -->
+  <div class="ms-profile">
+    <img src="logo.png" alt="Profile">
+    <div class="ms-profile-text">
+      <div class="ms-name">Guest User</div>
+      <div class="ms-phone">********</div>
+    </div>
+  </div>
+
+  <!-- MAIN NAV -->
+  <nav class="ms-nav">
+    <a href="index.html" data-page="index">Home</a>
+    <a href="course-details.html" data-page="course">Course Details</a>
+
+    <!-- ACCORDION -->
+    <button class="ms-accordion" aria-expanded="false">My Courses</button>
+    <div class="ms-accordion-panel">
+      <a href="full-course.html" data-page="full">Full Course (Part I + II + III)</a>
+      <a href="part-1.html" data-page="p1">Part I</a>
+      <a href="part-2.html" data-page="p2">Part II</a>
+      <a href="part-3.html" data-page="p3">Part III</a>
+    </div>
+
+    <a href="mock-tests.html" data-page="mock">Mock / MCQ Tests</a>
+    <a href="demo-pdfs.html" data-page="demo">Demo PDFs</a>
+    <a href="gk-pdfs.html" data-page="gk">GK PDFs</a>
+    <a href="jkssb-updates.html" data-page="updates">JKSSB Updates</a>
+    <a href="feedback.html" data-page="feedback">Feedback</a>
+    <a href="contact.html" data-page="contact">Contact Us</a>
+  </nav>
+
+  <!-- LEGAL -->
+  <div class="ms-legal">
+    <a href="privacy.html" data-page="privacy">Privacy Policy</a>
+    <a href="terms.html" data-page="terms">Terms & Conditions</a>
+    <a href="refund.html" data-page="refund">Refund Policy</a>
+    <a href="copyright.html" data-page="copyright">Copyright Warning</a>
+  </div>
+
+</aside>
+<!-- ============================================================= -->
+
+
+<!-- ================= OVERLAY ================= -->
+<div id="msOverlay"></div>
+<!-- =========================================== -->
