@@ -4,214 +4,62 @@
   <meta charset="UTF-8">
   <title>Home | JKSSB Drivers Academy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Global Styles -->
   <link rel="stylesheet" href="style.css">
-
-  <!-- Page-specific background override -->
-<style>
-  /* ===== GROK STYLE MESH GRADIENT (TOP ONLY) ===== */
-  body {
-    margin: 0;
-    background: #050509; /* solid base below nav */
-    position: relative;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  /* Gradient layer only in upper portion */
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 55vh; /* controls how far gradient goes down */
-    background:
-      radial-gradient(circle at 20% 30%, #3b1d82 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, #1e3a8a 0%, transparent 55%),
-      radial-gradient(circle at 50% 80%, #0f3460 0%, transparent 60%);
-    z-index: -1;
-    pointer-events: none;
-  }
-
-  /* ===== FROSTED WHITE TOP BAR ===== */
-  .premium-bar {
-    background: rgba(255, 255, 255, 0.18);
-    backdrop-filter: blur(24px) saturate(140%);
-    -webkit-backdrop-filter: blur(24px) saturate(140%);
-    border-bottom: 1px solid rgba(255,255,255,0.35);
-    box-shadow:
-      0 8px 30px rgba(0,0,0,0.45),
-      inset 0 1px 0 rgba(255,255,255,0.5);
-  }
-
-  /* Ensure nav text remains readable */
-  .premium-bar .app-name,
-  .premium-bar .icon-btn {
-    color: #000;
-  }
-
-  /* ===== White Frost Bottom Pill (keep yours refined) ===== */
-  .white-frost-nav {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 8px;
-    padding: 10px 14px;
-    border-radius: 30px;
-
-    background: rgba(255, 255, 255, 0.22);
-    backdrop-filter: blur(28px) saturate(150%);
-    -webkit-backdrop-filter: blur(28px) saturate(150%);
-    border: 1px solid rgba(255,255,255,0.4);
-
-    box-shadow:
-      0 20px 60px rgba(0,0,0,0.6),
-      inset 0 1px 0 rgba(255,255,255,0.6);
-
-    z-index: 999;
-  }
-
-  .white-frost-nav a {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 10px 16px;
-    border-radius: 22px;
-    font-size: 13px;
-    color: #000;
-    text-decoration: none;
-    opacity: 0.85;
-    transition: 0.25s ease;
-  }
-
-  .white-frost-nav a.active {
-    background: rgba(255,255,255,0.35);
-    opacity: 1;
-  }
-
-  .white-frost-nav a:hover {
-    opacity: 1;
-  }
-</style>
-
 </head>
-
 <body>
 
-  <!-- ================= TOP BAR (UNCHANGED) ================= -->
-<header class="top-bar premium-bar">
+<!-- ===== TOP NAV BAR ===== -->
+<nav class="navbar">
   <div class="nav-left">
-    <button class="icon-btn" onclick="toggleMenu()" aria-label="Menu">
-      &#9776;
-    </button>
-    <span class="app-name">JKSSB Drivers Academy</span>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <span class="logo">JKSSB Drivers Academy</span>
   </div>
 
-  <div class="nav-right">
-    <button class="icon-btn" onclick="toggleSearch()" aria-label="Search">
-      🔍
-    </button>
-  </div>
-</header>
+  <ul class="nav-items" id="navItems">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="course-details.html">Courses</a></li>
+    <li><a href="my-courses.html">My Courses</a></li>
+    <li><a href="mock-tests.html">Mock Tests</a></li>
+    <li><a href="demo-pdfs.html">PDFs</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
 
+<!-- ===== MAIN CONTENT ===== -->
+<main class="content">
+  <section class="glass-card">
+    <h1>JKSSB Drivers Academy</h1>
 
-  <!-- ================= HAMBURGER MENU (UNCHANGED) ================= -->
-  <nav class="nav-links" id="navMenu">
-    <a href="index.html">Home</a>
-    <a href="course-details.html">Course Details</a>
-    <a href="my-courses.html">My Courses</a>
-    <a href="mock-tests.html">Mock / MCQ Tests</a>
-    <a href="demo-pdfs.html">Demo PDFs</a>
-    <a href="gk-pdfs.html">GK PDFs</a>
-    <a href="jkssb-updates.html">JKSSB Updates</a>
-    <a href="feedback.html">Feedback</a>
-    <a href="contact.html">Contact Us</a>
-  </nav>
-
-  <div class="search-box" id="searchBox">
-  <input
-    type="search"
-    id="siteSearch"
-    placeholder="Search courses, PDFs, tests…"
-  />
-</div>
-
-  <!-- ================= MAIN CONTENT ================= -->
-  <main>
-    <section class="glass-card">
-      <h1>JKSSB Drivers Academy</h1>
-
-      <p>
-        A dedicated preparation platform for <strong>JKSSB Driver</strong> and other
-        competitive driver recruitment examinations.
-      </p>
-
-      <p>
-        We provide structured courses, exam-oriented notes, mock tests, and
-        regular updates — all designed specifically for driver exams.
-      </p>
-
-      <ul>
-        <li>✔ Part-wise course structure (I, II, III)</li>
-        <li>✔ Practice-oriented MCQ tests</li>
-        <li>✔ Free demo PDFs & GK material</li>
-        <li>✔ Regular JKSSB updates</li>
-      </ul>
-
-      <p>
-        Use the navigation above to explore courses and study material.
-      </p>
-    </section>
-  </main>
-
-  <!-- ================= FLOATING WHITE FROST NAV ================= -->
-  <div class="white-frost-nav">
-    <a href="index.html" class="active">🏠 Home</a>
-    <a href="my-courses.html">📚 Courses</a>
-    <a href="mock-tests.html">📝 Tests</a>
-    <a href="gk-pdfs.html">🔍 Search</a>
-    <a href="contact.html">⚙️ Contact</a>
-  </div>
-
-  <!-- ================= FOOTER ================= -->
-  <footer style="margin-top:60px;padding:20px;text-align:center;font-size:13px;opacity:0.85;">
-    <p>© JKSSB Drivers Academy. All rights reserved.</p>
     <p>
-      <a href="privacy-policy.html">Privacy Policy</a> |
-      <a href="terms-and-conditions.html">Terms & Conditions</a> |
-      <a href="refund-policy.html">Refund Policy</a> |
-      <a href="copyright-warning.html">Copyright Warning</a>
+      A dedicated preparation platform for <strong>JKSSB Driver</strong> and other
+      competitive driver recruitment examinations.
     </p>
-  </footer>
 
-  <!-- JS (already used by hamburger/search) -->
-  <script>
+    <p>
+      We provide structured courses, exam-oriented notes, mock tests,
+      and regular updates — all designed specifically for driver exams.
+    </p>
+
+    <ul>
+      <li>✔ Part-wise course structure (I, II, III)</li>
+      <li>✔ Practice-oriented MCQ tests</li>
+      <li>✔ Free demo PDFs & GK material</li>
+      <li>✔ Regular JKSSB updates</li>
+    </ul>
+  </section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <p>© JKSSB Drivers Academy. All rights reserved.</p>
+</footer>
+
+<!-- ===== JS ===== -->
+<script>
   function toggleMenu() {
-    document.getElementById("navMenu").classList.toggle("show");
+    document.getElementById("navItems").classList.toggle("show");
   }
-
-  function toggleSearch() {
-    const box = document.getElementById("searchBox");
-    box.style.display = box.style.display === "block" ? "none" : "block";
-    document.getElementById("siteSearch").focus();
-  }
-
-  document.getElementById("siteSearch")?.addEventListener("input", function () {
-    const query = this.value.toLowerCase();
-    document.querySelectorAll("section.glass-card *").forEach(el => {
-      if (el.textContent.toLowerCase().includes(query)) {
-        el.style.background = "rgba(255,255,255,0.15)";
-      } else {
-        el.style.background = "transparent";
-      }
-    });
-  });
 </script>
-
 
 </body>
 </html>
