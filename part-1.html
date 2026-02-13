@@ -8,9 +8,10 @@
 </head>
 <body>
 
-<!-- REQUIRED -->
+<!-- NAVBAR -->
 <div id="navbar-placeholder"></div>
 
+<!-- PAGE CONTENT -->
 <main class="content">
   <section class="glass-card">
 
@@ -22,27 +23,42 @@
       <li>Basic road rules</li>
       <li>Traffic signs and signals</li>
       <li>Road safety practices</li>
+      <li>Driving discipline and precautions</li>
     </ul>
 
     <p>
-      Study material will be provided through PDFs and practice questions.
+      Study material will be provided through detailed PDFs,
+      practice MCQs, and revision notes strictly aligned with
+      JKSSB Driver syllabus.
     </p>
 
-    <a href="/jkssbdriversacademy/my-courses.html">Back to My Courses</a>
+    <a href="/jkssbdriversacademy/my-courses.html" class="back-btn">
+      ← Back to My Courses
+    </a>
 
   </section>
 </main>
 
-<!-- REQUIRED SCRIPT -->
+<!-- FOOTER -->
+<footer>
+  <p>© JKSSB Drivers Academy. All rights reserved.</p>
+  <p>
+    <a href="privacy-policy.html">Privacy Policy</a> |
+    <a href="terms-and-conditions.html">Terms & Conditions</a> |
+    <a href="refund-policy.html">Refund Policy</a> |
+    <a href="copyright-warning.html">Copyright Warning</a>
+  </p>
+</footer>
+
+<!-- NAVBAR LOAD SCRIPT -->
 <script>
 fetch("/jkssbdriversacademy/navbar.html")
-  .then(response => response.text())
-  .then(data => {
-    document.getElementById("navbar-placeholder").innerHTML = data;
+  .then(res => res.text())
+  .then(html => {
+    document.getElementById("navbar-placeholder").innerHTML = html;
 
-    // Highlight active page
+    // Highlight active desktop nav
     const currentPage = location.pathname.split("/").pop() || "index.html";
-
     document.querySelectorAll(".nav-items a").forEach(link => {
       if (link.getAttribute("href") === currentPage) {
         link.classList.add("active");
@@ -50,15 +66,7 @@ fetch("/jkssbdriversacademy/navbar.html")
     });
   })
   .catch(err => console.error("Navbar load failed:", err));
-
-function toggleMobileMenu() {
-  const nav = document.getElementById("navItems");
-  if (nav) {
-    nav.classList.toggle("show");
-  }
-}
 </script>
-
 
 </body>
 </html>
