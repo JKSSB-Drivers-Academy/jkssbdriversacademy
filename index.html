@@ -7,7 +7,10 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="navbar-placeholder"></div>
+
+<!-- ================= NAVBAR PLACEHOLDER ================= -->
+<div id="navbar-placeholder"></div>
+
 <!-- ================= MAIN CONTENT ================= -->
 <main class="content">
   <section class="glass-card">
@@ -49,67 +52,64 @@
   </p>
 </footer>
 
-<!-- ================= JS ================= -->
- <script>
-fetch("/jkssbdriversacademy/navbar.html")
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById("navbar-placeholder").innerHTML = data;
-
-    const path = window.location.pathname;
-
-    document.querySelectorAll(".nav-items a").forEach(link => {
-      const linkPath = link.getAttribute("href");
-
-      if (path.includes(linkPath.replace(".html", ""))) {
-        link.classList.add("active");
-      }
-    });
-  });
-</script>
+<!-- ================= NAVBAR LOAD + MOBILE SIDEBAR JS ================= -->
 <script>
-document.addEventListener("DOMContentLoaded", function () {
+/*
+  IMPORTANT:
+  Repo name = jkssbdriversacademy
+  So fetch path MUST include it
+*/
+fetch("/jkssbdriversacademy/navbar.html")
+  .then(res => {
+    if (!res.ok) throw new Error("Navbar fetch failed");
+    return res.text();
+  })
+  .then(html => {
+    // Inject navbar
+    document.getElementById("navbar-placeholder").innerHTML = html;
 
-  const profileBtn = document.getElementById("mobileProfileBtn");
-  const sidebar = document.getElementById("mobileSidebar");
-  const overlay = document.getElementById("msOverlay");
-  const accordion = document.querySelector(".ms-accordion");
+    // ===== MOBILE DRAWER LOGIC (AFTER NAVBAR LOADS) =====
+    const profileBtn = document.getElementById("mobileProfileBtn");
+    const sidebar   = document.getElementById("mobileSidebar");
+    const overlay   = document.getElementById("msOverlay");
+    const accordion = document.querySelector(".ms-accordion");
 
-  if (!profileBtn || !sidebar || !overlay) return;
-
-  function openCloseSidebar() {
-    sidebar.classList.toggle("open");
-    overlay.classList.toggle("show");
-    profileBtn.classList.toggle("active");
-
-    // lock background scroll
-    if (sidebar.classList.contains("open")) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
+    // Safety check
+    if (!profileBtn || !sidebar || !overlay) {
+      console.warn("Mobile sidebar elements not found");
+      return;
     }
-  }
 
-  // Open / close on profile icon
-  profileBtn.addEventListener("click", openCloseSidebar);
+    function toggleSidebar() {
+      sidebar.classList.toggle("open");
+      overlay.classList.toggle("show");
+      profileBtn.classList.toggle("active");
 
-  // Close on overlay tap
-  overlay.addEventListener("click", openCloseSidebar);
+      document.body.style.overflow =
+        sidebar.classList.contains("open") ? "hidden" : "";
+    }
 
-  // Accordion toggle
-  if (accordion) {
-    accordion.addEventListener("click", function () {
-      const expanded = this.getAttribute("aria-expanded") === "true";
-      this.setAttribute("aria-expanded", String(!expanded));
+    // Open / close drawer
+    profileBtn.addEventListener("click", toggleSidebar);
+    overlay.addEventListener("click", toggleSidebar);
+
+    // Accordion (My Courses)
+    if (accordion) {
+      accordion.addEventListener("click", () => {
+        const expanded = accordion.getAttribute("aria-expanded") === "true";
+        accordion.setAttribute("aria-expanded", String(!expanded));
+      });
+    }
+
+    // Close drawer on link click
+    sidebar.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", toggleSidebar);
     });
-  }
 
-  // Close sidebar when any link is clicked
-  sidebar.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", openCloseSidebar);
+  })
+  .catch(err => {
+    console.error(err);
   });
-
-});
 </script>
 
 </body>
