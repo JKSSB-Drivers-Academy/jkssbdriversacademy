@@ -1,0 +1,159 @@
+/* ==============================
+   DESKTOP WEBSITE STYLES
+   (Copied from original style.css)
+============================== */
+
+/* ==============================
+   NAVBAR – CENTERED & FROSTED
+============================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+
+  padding: 22px 32px;
+
+  background: rgba(255, 255, 255, 0.50);
+  backdrop-filter: blur(60px);
+  -webkit-backdrop-filter: blur(28px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+}
+
+/* ==============================
+   LOGO (IMAGE + TEXT)
+============================== */
+.logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.logo-img {
+  height: 34px;        /* original size */
+  width: auto;
+}
+
+.logo-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111;
+}
+
+/* ==============================
+   NAV ITEMS (CENTERED ROW)
+============================== */
+.nav-items {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+
+  white-space: nowrap;
+}
+
+/* ==============================
+   NAV BUTTONS – WATERY GLASS
+============================== */
+.nav-items li {
+  position: relative;
+}
+
+.nav-items li a {
+  padding: 12px 22px;
+  text-decoration: none;
+  font-weight: 500;
+  color: #111;
+
+  background: rgba(255, 255, 255, 0.30);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border-radius: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 4px 10px rgba(0, 0, 0, 0.12);
+
+  transition:
+    background 0.3s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Bubble hover */
+.nav-items li a:hover {
+  background: rgba(255, 255, 255, 0.55);
+  transform: scale(1.06);
+  box-shadow:
+    0 8px 18px rgba(255, 255, 255, 0.35),
+    0 6px 14px rgba(0, 0, 0, 0.18);
+}
+
+/* Active page */
+.nav-items li a.active {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+/* ==============================
+   MORE ▾ DROPDOWN
+============================== */
+.more-menu {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+
+  display: none;
+
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  min-width: 180px;
+}
+
+.dropdown li a {
+  display: block;
+  padding: 10px 18px;
+  margin: 6px 0;
+  text-align: center;
+}
+
+/* Show dropdown on hover */
+.more-menu:hover .dropdown {
+  display: block;
+}
+
+/* ==============================
+   DESKTOP SAFETY
+============================== */
+#mobileSidebar,
+#mobileProfileBtn,
+#msOverlay {
+  display: none !important;
+}
