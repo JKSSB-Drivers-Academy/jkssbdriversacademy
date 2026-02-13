@@ -69,12 +69,12 @@ body::before {
 }
 
 .logo-img {
-  height: 28px;        /* ✅ SMALL, PROFESSIONAL SIZE */
+  height: 34px;        /* ✅ SMALL, PROFESSIONAL SIZE */
   width: auto;
 }
 
 .logo-text {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   color: #111;
 }
