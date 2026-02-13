@@ -5,7 +5,7 @@
   <title>My Courses | JKSSB Drivers Academy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- ✅ GLOBAL CSS SYSTEM (CORRECT PATHS) -->
+  <!-- GLOBAL CSS SYSTEM -->
   <link rel="stylesheet" href="/jkssbdriversacademy/base.css">
   <link rel="stylesheet" href="/jkssbdriversacademy/desktop.css" media="(min-width:769px)">
   <link rel="stylesheet" href="/jkssbdriversacademy/mobile.css" media="(max-width:768px)">
@@ -13,6 +13,7 @@
 
 <body>
 
+<!-- NAVBAR (auto-loaded from app.js) -->
 <div id="navbar-placeholder"></div>
 
 <main class="content">
@@ -31,32 +32,11 @@
   </section>
 </main>
 
-<footer>
-  <p>© JKSSB Drivers Academy. All rights reserved.</p>
-  <p>
-    <a href="privacy-policy.html">Privacy Policy</a> |
-    <a href="terms-and-conditions.html">Terms & Conditions</a> |
-    <a href="refund-policy.html">Refund Policy</a> |
-    <a href="copyright-warning.html">Copyright Warning</a>
-  </p>
-</footer>
+<!-- FOOTER (auto-loaded from app.js) -->
+<div id="footer-placeholder"></div>
 
-<script>
-fetch("/jkssbdriversacademy/navbar.html")
-  .then(res => res.text())
-  .then(html => {
-    document.getElementById("navbar-placeholder").innerHTML = html;
-
-    // highlight active link
-    const currentPage = location.pathname.split("/").pop() || "index.html";
-    document.querySelectorAll(".nav-items a").forEach(link => {
-      if (link.getAttribute("href") === currentPage) {
-        link.classList.add("active");
-      }
-    });
-  })
-  .catch(err => console.error("Navbar load failed:", err));
-</script>
+<!-- MASTER SCRIPT -->
+<script src="/jkssbdriversacademy/app.js"></script>
 
 </body>
 </html>
