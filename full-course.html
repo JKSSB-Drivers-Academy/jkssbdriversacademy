@@ -2,27 +2,38 @@
 <html>
 <head>
   <title>Full Course | JKSSB Drivers Academy</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-  <h1>Full Course (Part I + II + III)</h1>
 
-  <p>
-    This course includes:
-  </p>
+<!-- REQUIRED -->
+<div id="navbar-placeholder"></div>
 
-  <ul>
-    <li>Part I – Traffic & Road Safety</li>
-    <li>Part II – MV Act & CMV Rules</li>
-    <li>Part III – Automobile & Mechanical</li>
-  </ul>
+<main class="content">
+  <section class="glass-card">
 
-  <p>
-    Course material will be provided through PDFs, videos, and mock tests.
-  </p>
+    <h1>Full Course (Part I + II + III)</h1>
 
-  <a href="my-courses.html">Back to My Courses</a>
-  <script>
+    <p>This course includes:</p>
+
+    <ul>
+      <li>Part I – Traffic & Road Safety</li>
+      <li>Part II – MV Act & CMV Rules</li>
+      <li>Part III – Automobile & Mechanical</li>
+    </ul>
+
+    <p>
+      Course material will be provided through PDFs, videos, and mock tests.
+    </p>
+
+    <a href="../my-courses.html">Back to My Courses</a>
+
+  </section>
+</main>
+
+<!-- REQUIRED SCRIPT -->
+<script>
 fetch("/jkssbdriversacademy/navbar.html")
   .then(res => res.text())
   .then(data => {
@@ -31,15 +42,13 @@ fetch("/jkssbdriversacademy/navbar.html")
     const path = window.location.pathname;
 
     document.querySelectorAll(".nav-items a").forEach(link => {
-      const linkPath = link.getAttribute("href");
-
-      if (path.includes(linkPath.replace(".html", ""))) {
+      const linkPath = link.getAttribute("href").replace(".html", "");
+      if (path.includes(linkPath)) {
         link.classList.add("active");
       }
     });
   });
 </script>
-
 
 </body>
 </html>
