@@ -10,13 +10,12 @@
   <link rel="stylesheet" href="desktop.css" media="(min-width:769px)">
   <link rel="stylesheet" href="mobile.css" media="(max-width:768px)">
 </head>
+<body data-page="index">
 
-<body>
-
-<!-- ================= NAVBAR PLACEHOLDER ================= -->
+<!-- NAVBAR -->
 <div id="navbar-placeholder"></div>
 
-<!-- ================= MAIN CONTENT ================= -->
+<!-- PAGE CONTENT -->
 <main class="content">
   <section class="glass-card">
     <h1>JKSSB Drivers Academy</h1>
@@ -28,7 +27,7 @@
 
     <p>
       We provide structured courses, exam-oriented notes, mock tests,
-      free PDFs, GK material, and regular JKSSB updates — all designed
+      free PDFs, GK material, and regular JKSSB updates — designed
       specifically for driver recruitment exams.
     </p>
 
@@ -38,15 +37,10 @@
       <li>✔ Mock & MCQ tests with explanations</li>
       <li>✔ Official JKSSB notifications & updates</li>
     </ul>
-
-    <p>
-      Use the navigation bar above to access courses, PDFs, tests,
-      updates, and legal information.
-    </p>
   </section>
 </main>
 
-<!-- ================= FOOTER ================= -->
+<!-- FOOTER -->
 <footer>
   <p>© JKSSB Drivers Academy. All rights reserved.</p>
   <p>
@@ -57,51 +51,8 @@
   </p>
 </footer>
 
-<!-- ================= NAVBAR LOAD + MOBILE SIDEBAR JS ================= -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-  fetch("/jkssbdriversacademy/navbar.html")
-    .then(res => {
-      if (!res.ok) throw new Error("Navbar fetch failed");
-      return res.text();
-    })
-    .then(html => {
-      document.getElementById("navbar-placeholder").innerHTML = html;
-
-      const profileBtn = document.getElementById("mobileProfileBtn");
-      const sidebar   = document.getElementById("mobileSidebar");
-      const overlay   = document.getElementById("msOverlay");
-      const accordion = document.querySelector(".ms-accordion");
-
-      if (!profileBtn || !sidebar || !overlay) return;
-
-      function toggleSidebar() {
-        sidebar.classList.toggle("open");
-        overlay.classList.toggle("show");
-        profileBtn.classList.toggle("active");
-        document.body.style.overflow =
-          sidebar.classList.contains("open") ? "hidden" : "";
-      }
-
-      profileBtn.addEventListener("click", toggleSidebar);
-      overlay.addEventListener("click", toggleSidebar);
-
-      if (accordion) {
-        accordion.addEventListener("click", () => {
-          const expanded = accordion.getAttribute("aria-expanded") === "true";
-          accordion.setAttribute("aria-expanded", String(!expanded));
-        });
-      }
-
-      sidebar.querySelectorAll("a").forEach(link => {
-        link.addEventListener("click", toggleSidebar);
-      });
-    })
-    .catch(err => console.error(err));
-
-});
-</script>
+<!-- MASTER SCRIPT (ONLY SCRIPT ALLOWED) -->
+<script src="js/app.js"></script>
 
 </body>
 </html>
