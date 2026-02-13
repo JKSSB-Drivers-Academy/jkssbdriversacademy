@@ -4,11 +4,16 @@
   <meta charset="UTF-8">
   <title>My Courses | JKSSB Drivers Academy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+
+  <!-- ✅ CORRECT CSS PATH -->
+  <link rel="stylesheet" href="/jkssbdriversacademy/style.css">
 </head>
 <body>
-  <div id="navbar-placeholder"></div>
-<!-- ================= PAGE CONTENT ================= -->
+
+<!-- NAVBAR -->
+<div id="navbar-placeholder"></div>
+
+<!-- PAGE CONTENT -->
 <main class="content">
   <section class="glass-card">
 
@@ -25,7 +30,7 @@
   </section>
 </main>
 
-<!-- ================= FOOTER ================= -->
+<!-- FOOTER -->
 <footer>
   <p>© JKSSB Drivers Academy. All rights reserved.</p>
   <p>
@@ -35,15 +40,16 @@
     <a href="copyright-warning.html">Copyright Warning</a>
   </p>
 </footer>
+
+<!-- NAVBAR LOAD -->
 <script>
 fetch("/jkssbdriversacademy/navbar.html")
-  .then(response => response.text())
-  .then(data => {
-    document.getElementById("navbar-placeholder").innerHTML = data;
+  .then(res => res.text())
+  .then(html => {
+    document.getElementById("navbar-placeholder").innerHTML = html;
 
-    // Highlight active page
+    // Highlight active desktop link
     const currentPage = location.pathname.split("/").pop() || "index.html";
-
     document.querySelectorAll(".nav-items a").forEach(link => {
       if (link.getAttribute("href") === currentPage) {
         link.classList.add("active");
@@ -51,13 +57,6 @@ fetch("/jkssbdriversacademy/navbar.html")
     });
   })
   .catch(err => console.error("Navbar load failed:", err));
-
-function toggleMobileMenu() {
-  const nav = document.getElementById("navItems");
-  if (nav) {
-    nav.classList.toggle("show");
-  }
-}
 </script>
 
 </body>
