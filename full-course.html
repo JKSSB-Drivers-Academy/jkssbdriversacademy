@@ -1,13 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Full Course | JKSSB Drivers Academy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <link rel="stylesheet" href="/jkssbdriversacademy/style.css">
+
+  <!-- GLOBAL CSS SYSTEM -->
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="desktop.css" media="(min-width:769px)">
+  <link rel="stylesheet" href="mobile.css" media="(max-width:768px)">
 </head>
+
 <body>
 
-<!-- REQUIRED -->
+<!-- NAVBAR PLACEHOLDER -->
 <div id="navbar-placeholder"></div>
 
 <main class="content">
@@ -18,38 +24,61 @@
     <p>This course includes:</p>
 
     <ul>
-      <li>Part I – Traffic & Road Safety</li>
-      <li>Part II – MV Act & CMV Rules</li>
-      <li>Part III – Automobile & Mechanical</li>
+      <li><strong>Part I</strong> – Traffic Rules, Road Safety & Signals</li>
+      <li><strong>Part II</strong> – Motor Vehicles Act & CMV Rules</li>
+      <li><strong>Part III</strong> – Automobile, Mechanical & Vehicle Systems</li>
     </ul>
 
     <p>
-      Course material will be provided through PDFs, videos, and mock tests.
+      Course material will be provided through structured PDFs,
+      video lectures, MCQs, and mock tests designed strictly
+      according to the JKSSB Driver syllabus.
     </p>
 
-    <a href="/jkssbdriversacademy/my-courses.html">Back to My Courses</a>
+    <a href="my-courses.html" class="back-btn">← Back to My Courses</a>
 
   </section>
 </main>
 
-<!-- REQUIRED SCRIPT -->
+<!-- ================= FOOTER ================= -->
+<footer>
+  <p>© JKSSB Drivers Academy. All rights reserved.</p>
+  <p>
+    <a href="privacy-policy.html">Privacy Policy</a> |
+    <a href="terms-and-conditions.html">Terms & Conditions</a> |
+    <a href="refund-policy.html">Refund Policy</a> |
+    <a href="copyright-warning.html">Copyright Warning</a>
+  </p>
+</footer>
+
+<!-- ================= NAVBAR SCRIPT ================= -->
 <script>
-fetch("/jkssbdriversacademy/navbar.html")
-  .then(response => response.text())
-  .then(data => {
-    document.getElementById("navbar-placeholder").innerHTML = data;
+document.addEventListener("DOMContentLoaded", function () {
 
-    // Highlight active page
-    const currentPage = location.pathname.split("/").pop() || "index.html";
-
-    document.querySelectorAll(".nav-items a").forEach(link => {
-      if (link.getAttribute("href") === currentPage) {
-        link.classList.add("active");
+  fetch("/jkssbdriversacademy/navbar.html")
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Navbar fetch failed");
       }
-    });
-  })
-  .catch(err => console.error("Navbar load failed:", err));
+      return response.text();
+    })
+    .then(data => {
+      document.getElementById("navbar-placeholder").innerHTML = data;
 
+      // Highlight active page
+      const currentPage = location.pathname.split("/").pop() || "index.html";
+
+      document.querySelectorAll(".nav-items a").forEach(link => {
+        if (link.getAttribute("href") === currentPage) {
+          link.classList.add("active");
+        }
+      });
+    })
+    .catch(err => console.error("Navbar load failed:", err));
+
+});
+
+// Mobile hamburger toggle
 function toggleMobileMenu() {
   const nav = document.getElementById("navItems");
   if (nav) {
