@@ -45,7 +45,7 @@ body::before {
   z-index: 1000;
 
   display: grid;
-  grid-template-columns: auto 1fr auto; /* logo | nav | spacer */
+  grid-template-columns: auto 1fr auto;
   align-items: center;
 
   padding: 22px 32px;
@@ -59,13 +59,24 @@ body::before {
 }
 
 /* ==============================
-   LOGO (LEFT)
+   LOGO (IMAGE + TEXT)
 ============================== */
-.logo {
+.logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.logo-img {
+  height: 28px;        /* ✅ SMALL, PROFESSIONAL SIZE */
+  width: auto;
+}
+
+.logo-text {
   font-size: 18px;
   font-weight: 600;
   color: #111;
-  white-space: nowrap;
 }
 
 /* ==============================
@@ -87,7 +98,7 @@ body::before {
 .nav-items {
   list-style: none;
   display: flex;
-  justify-content: center;   /* 🔥 KEY FIX */
+  justify-content: center;
   align-items: center;
 
   gap: 14px;
@@ -142,7 +153,7 @@ body::before {
 }
 
 /* ==============================
-   MORE ▾ DROPDOWN (CLEAN)
+   MORE ▾ DROPDOWN
 ============================== */
 .more-menu {
   position: relative;
@@ -171,10 +182,6 @@ body::before {
   min-width: 180px;
 }
 
-.dropdown li {
-  list-style: none;
-}
-
 .dropdown li a {
   display: block;
   padding: 10px 18px;
@@ -191,7 +198,7 @@ body::before {
    CONTENT OFFSET
 ============================== */
 .content {
-  padding-top: 170px; /* space for taller navbar */
+  padding-top: 170px;
   padding-left: 20px;
   padding-right: 20px;
 }
@@ -260,5 +267,9 @@ footer {
 
   .content {
     padding-top: 200px;
+  }
+
+  .logo-img {
+    height: 26px;   /* slightly smaller on mobile */
   }
 }
