@@ -412,7 +412,7 @@ BUY NOW
 <div class="modal-content" id="modal-body"></div>
 </div>
 
-<a href="javascript:history.back()" class="back-btn">← Back</a>
+<a href="course-details.html" class="back-btn">← Back</a>
 
 </section>
 </main>
@@ -429,25 +429,38 @@ BUY NOW
 </footer>
 
 <script>
-function toggleDetails(id){
-  if(window.innerWidth<=768){
-    document.getElementById('modal-body').innerHTML =
+function toggleDetails(id) {
+
+  // MOBILE → use modal only
+  if (window.innerWidth <= 768) {
+    document.getElementById("modal-body").innerHTML =
       document.getElementById(id).innerHTML;
-    document.getElementById('modal').style.display='block';
-  }else{
-    document.getElementById(id).classList.add('open');
+    document.getElementById("modal").style.display = "block";
+    return;
+  }
+
+  // DESKTOP → accordion behavior
+
+  const allDetails = document.querySelectorAll(".details");
+  const target = document.getElementById(id);
+  const isOpen = target.classList.contains("open");
+
+  // Close ALL first
+  allDetails.forEach(d => d.classList.remove("open"));
+
+  // If it was not open earlier → open it
+  if (!isOpen) {
+    target.classList.add("open");
   }
 }
-function closeDetails(id){
-  document.getElementById(id).classList.remove('open');
-}
-function closeModal(){
-  document.getElementById('modal').style.display='none';
+
+function closeDetails(id) {
+  document.getElementById(id).classList.remove("open");
 }
 
-fetch("navbar.html")
-.then(r=>r.text())
-.then(d=>document.getElementById("navbar-placeholder").innerHTML=d);
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+}
 </script>
 
 </body>
