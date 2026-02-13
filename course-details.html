@@ -638,28 +638,6 @@
     <a href="/jkssbdriversacademy/copyright-warning.html">Copyright Warning</a>
   </p>
 </footer>
- <script>
-fetch("/jkssbdriversacademy/navbar.html")
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById("navbar-placeholder").innerHTML = data;
-
-    const path = window.location.pathname;
-
-    document.querySelectorAll(".nav-items a").forEach(link => {
-      const linkPath = link.getAttribute("href");
-
-      if (path.includes(linkPath.replace(".html", ""))) {
-        link.classList.add("active");
-      }
-    });
-  });
-</script>
-  <script>
-function toggleMobileMenu() {
-  document.getElementById("navItems").classList.toggle("show");
-}
-</script>
 
 </body>
 </html>
