@@ -39,52 +39,11 @@
   </section>
 </main>
 
-<!-- ================= FOOTER ================= -->
-<footer>
-  <p>© JKSSB Drivers Academy. All rights reserved.</p>
-  <p>
-    <a href="privacy-policy.html">Privacy Policy</a> |
-    <a href="terms-and-conditions.html">Terms & Conditions</a> |
-    <a href="refund-policy.html">Refund Policy</a> |
-    <a href="copyright-warning.html">Copyright Warning</a>
-  </p>
-</footer>
+<!-- FOOTER PLACEHOLDER -->
+<div id="footer-placeholder"></div>
 
-<!-- ================= NAVBAR SCRIPT ================= -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-  fetch("/jkssbdriversacademy/navbar.html")
-    .then(response => {
-      if (!response.ok) {
-        throw new Error("Navbar fetch failed");
-      }
-      return response.text();
-    })
-    .then(data => {
-      document.getElementById("navbar-placeholder").innerHTML = data;
-
-      // Highlight active page
-      const currentPage = location.pathname.split("/").pop() || "index.html";
-
-      document.querySelectorAll(".nav-items a").forEach(link => {
-        if (link.getAttribute("href") === currentPage) {
-          link.classList.add("active");
-        }
-      });
-    })
-    .catch(err => console.error("Navbar load failed:", err));
-
-});
-
-// Mobile hamburger toggle
-function toggleMobileMenu() {
-  const nav = document.getElementById("navItems");
-  if (nav) {
-    nav.classList.toggle("show");
-  }
-}
-</script>
+<!-- MASTER JS -->
+<script src="/jkssbdriversacademy/app.js"></script>
 
 </body>
 </html>
