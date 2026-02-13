@@ -35,7 +35,8 @@
     <a href="copyright-warning.html">Copyright Warning</a>
   </p>
 </footer>
-  fetch("/jkssbdriversacademy/navbar.html")
+<script>
+fetch("/jkssbdriversacademy/navbar.html")
   .then(response => response.text())
   .then(data => {
     document.getElementById("navbar-placeholder").innerHTML = data;
