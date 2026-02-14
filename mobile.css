@@ -1,10 +1,10 @@
 /* ==============================
-   MOBILE APP SHELL
+   MOBILE APP SHELL – PREMIUM
 ============================== */
 @media (max-width: 768px) {
 
   /* ==============================
-     TOP BAR (LOGO AS TRIGGER)
+     TOP BAR
   ============================== */
   .navbar {
     padding: 14px 16px;
@@ -12,23 +12,25 @@
 
   .logo-wrap {
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     transition: transform 0.25s ease;
   }
 
   .logo-wrap:active {
-    transform: scale(0.96);
+    transform: scale(0.95);
   }
 
   .logo-img {
-    height: 28px;
+    height: 26px;
   }
 
   .logo-text {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
   }
 
-  /* Hide desktop nav pills */
   .nav-items {
     display: none !important;
   }
@@ -39,8 +41,8 @@
   #msOverlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.35);
-    backdrop-filter: blur(2px);
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
     z-index: 998;
     opacity: 0;
     pointer-events: none;
@@ -53,33 +55,51 @@
   }
 
   /* ==============================
-     SIDEBAR DRAWER
+     SIDEBAR DRAWER (WITH GRADIENT)
   ============================== */
   #mobileSidebar {
     position: fixed;
     top: 0;
-    left: -75%;
-    width: 75%;
+    left: -82%;
+    width: 82%;
     height: 100%;
     z-index: 999;
 
-    background: rgba(255, 255, 255, 0.28);
-    backdrop-filter: blur(22px);
-    -webkit-backdrop-filter: blur(22px);
+    /* Gradient + glass */
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255,255,255,0.35) 0%,
+        rgba(240,245,255,0.25) 100%
+      );
 
-    box-shadow: 8px 0 32px rgba(0, 0, 0, 0.25);
-    transition: left 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+
+    box-shadow: 8px 0 40px rgba(0, 0, 0, 0.35);
+
+    transition: left 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 
     overflow-y: auto;
-    padding-bottom: 24px;
+    padding-bottom: 30px;
+
+    /* Subtle breathing animation */
+    animation: breathe 6s ease-in-out infinite;
   }
 
   #mobileSidebar.open {
     left: 0;
   }
 
+  /* Breathing effect */
+  @keyframes breathe {
+    0%   { box-shadow: 8px 0 35px rgba(0,0,0,0.25); }
+    50%  { box-shadow: 10px 0 45px rgba(0,0,0,0.35); }
+    100% { box-shadow: 8px 0 35px rgba(0,0,0,0.25); }
+  }
+
   /* ==============================
-     PROFILE HEADER
+     PROFILE HEADER (COMPACT)
   ============================== */
   .ms-profile {
     display: flex;
@@ -87,14 +107,14 @@
     gap: 12px;
 
     padding: 20px 16px;
-    padding-top: 36px; /* status bar comfort */
+    padding-top: 36px;
 
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   }
 
   .ms-profile img {
-    width: 48px;
-    height: 48px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
   }
 
@@ -109,16 +129,13 @@
     opacity: 0.7;
   }
 
-  /* ==============================
-     NAV SECTIONS
-  ============================== */
   .ms-nav,
   .ms-legal {
     padding: 14px;
   }
 
   /* ==============================
-     FROSTED BUTTONS (MATCH DESKTOP)
+     GLASS BUTTONS
   ============================== */
   .ms-nav a,
   .ms-legal a,
@@ -133,26 +150,46 @@
     font-weight: 600;
     color: #111;
 
-    background: rgba(255, 255, 255, 0.35);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.32);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
 
-    border-radius: 22px;
+    border-radius: 28px;
     border: 1px solid rgba(255, 255, 255, 0.6);
 
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.6),
-      0 4px 10px rgba(0, 0, 0, 0.12);
+      inset 0 1px 0 rgba(255, 255, 255, 0.7),
+      0 5px 14px rgba(0, 0, 0, 0.15);
+
+    transform: translateX(-20px);
+    opacity: 0;
 
     transition:
-      background 0.3s ease,
-      transform 0.25s ease;
+      transform 0.35s ease,
+      opacity 0.35s ease,
+      background 0.3s ease;
+  }
+
+  /* Slide-in animation when sidebar opens */
+  #mobileSidebar.open .ms-nav a,
+  #mobileSidebar.open .ms-legal a,
+  #mobileSidebar.open .ms-accordion {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  /* Soft bounce tap */
+  @keyframes bounceSoft {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(1.07); }
+    60%  { transform: scale(0.97); }
+    100% { transform: scale(1); }
   }
 
   .ms-nav a:active,
   .ms-legal a:active,
   .ms-accordion:active {
-    transform: scale(0.97);
+    animation: bounceSoft 0.4s ease;
   }
 
   /* ==============================
@@ -160,6 +197,18 @@
   ============================== */
   .ms-accordion {
     cursor: pointer;
+    position: relative;
+  }
+
+  .ms-accordion::after {
+    content: "▾";
+    position: absolute;
+    right: 18px;
+    transition: transform 0.3s ease;
+  }
+
+  .ms-accordion[aria-expanded="true"]::after {
+    transform: rotate(180deg);
   }
 
   .ms-accordion-panel {
@@ -177,11 +226,12 @@
   }
 
   /* ==============================
-     LEGAL SECTION VISUAL SEPARATION
+     LEGAL SECTION
   ============================== */
   .ms-legal {
-    margin-top: 10px;
-    border-top: 1px solid rgba(255, 255, 255, 0.35);
+    margin-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
     padding-top: 14px;
   }
+
 }
