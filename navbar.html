@@ -1,62 +1,27 @@
-<!-- ================= DESKTOP NAVBAR ================= -->
-<nav class="navbar">
+<!-- MOBILE OVERLAY -->
+<div id="msOverlay"></div>
 
-  <!-- LOGO -->
-  <a href="index.html" class="logo-wrap">
-    <img src="logo.png" alt="JKSSB Drivers Academy Logo" class="logo-img">
-    <span class="logo-text">JKSSB Drivers Academy</span>
-  </a>
+<!-- MOBILE SIDEBAR -->
+<aside id="mobileSidebar">
 
-  <!-- DESKTOP NAV -->
-  <ul class="nav-items">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="course-details.html">Course Details</a></li>
-    <li><a href="my-courses.html">My Courses</a></li>
-    <li><a href="mock-tests.html">Mock / MCQ Tests</a></li>
-    <li><a href="demo-pdfs.html">Demo PDFs</a></li>
-
-    <li class="more-menu">
-      <a href="#">More ▾</a>
-      <ul class="dropdown">
-        <li><a href="gk-pdfs.html">GK PDFs</a></li>
-        <li><a href="jkssb-updates.html">JKSSB Updates</a></li>
-        <li><a href="feedback.html">Feedback</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-      </ul>
-    </li>
-  </ul>
-
-</nav>
-<!-- ================================================== -->
-
-
-<!-- =============== MOBILE PROFILE BUTTON ============== -->
-<button id="mobileProfileBtn" aria-label="Open menu">
-  <img src="logo.png" alt="Profile">
-</button>
-<!-- ==================================================== -->
-
-
-<!-- ================= MOBILE SIDEBAR =================== -->
-<aside id="mobileSidebar" aria-hidden="true">
-
-  <!-- PROFILE -->
   <div class="ms-profile">
-    <img src="logo.png" alt="Profile">
-    <div class="ms-profile-text">
+    <img src="/jkssbdriversacademy/logo.png" alt="Logo">
+    <div>
       <div class="ms-name">JKSSB Drivers Academy</div>
       <div class="ms-phone">Official Platform</div>
     </div>
   </div>
 
-  <!-- NAV -->
   <nav class="ms-nav">
     <a href="index.html">Home</a>
     <a href="course-details.html">Course Details</a>
 
-    <button class="ms-accordion" aria-expanded="false">My Courses</button>
+    <button class="ms-accordion" aria-expanded="false">
+      My Courses
+    </button>
+
     <div class="ms-accordion-panel">
-      <a href="full-course.html">Full Course (Part I + II + III)</a>
+      <a href="full-course.html">Full Course</a>
       <a href="part-1.html">Part I</a>
       <a href="part-2.html">Part II</a>
       <a href="part-3.html">Part III</a>
@@ -70,7 +35,6 @@
     <a href="contact.html">Contact Us</a>
   </nav>
 
-  <!-- LEGAL -->
   <div class="ms-legal">
     <a href="privacy-policy.html">Privacy Policy</a>
     <a href="terms-and-conditions.html">Terms & Conditions</a>
@@ -79,9 +43,27 @@
   </div>
 
 </aside>
-<!-- ==================================================== -->
 
+<!-- TOP NAVBAR -->
+<header class="navbar">
 
-<!-- ================= OVERLAY ================= -->
-<div id="msOverlay"></div>
-<!-- =========================================== -->
+  <!-- THIS IS THE ONLY SIDEBAR TRIGGER -->
+  <div class="logo-wrap" id="mobileProfileBtn">
+
+    <img src="/jkssbdriversacademy/logo.png" class="logo-img">
+
+    <span class="logo-text">
+      JKSSB Drivers Academy
+    </span>
+
+  </div>
+
+  <!-- DESKTOP NAV -->
+  <nav class="nav-items">
+    <a href="index.html">Home</a>
+    <a href="course-details.html">Courses</a>
+    <a href="mock-tests.html">Mock Tests</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+</header>
