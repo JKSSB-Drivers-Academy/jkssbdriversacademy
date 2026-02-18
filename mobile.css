@@ -57,13 +57,19 @@
   /* ==============================
      SIDEBAR DRAWER (WITH GRADIENT)
   ============================== */
-  #mobileSidebar {
-    position: fixed;
-    top: 0;
-    left: -82%;
-    width: 82%;
-    height: 100%;
-    z-index: 999;
+#mobileSidebar {
+
+  position: fixed;
+  top: 0;
+  left: -82%;
+  width: 82%;
+  height: 100%;
+
+  will-change: transform;
+  transform: translateZ(0);
+
+  transition: left 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
 
     /* Gradient + glass */
     background:
